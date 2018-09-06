@@ -9,7 +9,7 @@ namespace Spryker\Client\ShoppingList\ShoppingList;
 
 use Generated\Shared\Transfer\ShoppingListItemTransfer;
 
-interface ShoppingListAddItemRequestExpanderInterface
+interface ShoppingListAddItemExpanderInterface
 {
     /**
      * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
@@ -17,5 +17,5 @@ interface ShoppingListAddItemRequestExpanderInterface
      *
      * @return \Generated\Shared\Transfer\ShoppingListItemTransfer
      */
-    public function expand(ShoppingListItemTransfer $shoppingListItemTransfer, array $params = []): ShoppingListItemTransfer;
+    public function expandItemAdd(ShoppingListItemTransfer $shoppingListItemTransfer, array $params = []): ShoppingListItemTransfer;
 }
