@@ -289,4 +289,16 @@ interface ShoppingListClientInterface
      * @return \Generated\Shared\Transfer\ShoppingListShareResponseTransfer
      */
     public function updateShoppingListSharedEntities(ShoppingListTransfer $shoppingListTransfer): ShoppingListShareResponseTransfer;
+
+    /**
+     * Specification:
+     *  - Gets customer from session.
+     *  - Makes Zed request. Gets customer by email.
+     *  - Updates customer in session.
+     *
+     * @api
+     *
+     * @return void
+     */
+    public function updateCustomerPermission(): void;
 }
