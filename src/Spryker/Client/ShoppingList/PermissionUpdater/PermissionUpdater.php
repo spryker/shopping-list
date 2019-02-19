@@ -7,6 +7,7 @@
 
 namespace Spryker\Client\ShoppingList\PermissionUpdater;
 
+use Generated\Shared\Transfer\CustomerTransfer;
 use Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToCustomerClientInterface;
 
 class PermissionUpdater implements PermissionUpdaterInterface
