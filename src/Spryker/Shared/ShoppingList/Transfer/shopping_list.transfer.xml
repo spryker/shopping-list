@@ -136,4 +136,8 @@
         <property name="messages" type="Message[]" singular="message"/>
     </transfer>
 
+    <transfer name="Customer">
+        <property name="idCustomer" type="int" />
+    </transfer>
+
 </transfers>
