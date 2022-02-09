@@ -28,17 +28,17 @@ class WriteShoppingListPermissionPlugin extends AbstractPlugin implements Execut
      * {@inheritDoc}
      *
      * @param array $configuration
-     * @param int|null $context ID shopping list.
+     * @param int|null $idShoppingList
      *
      * @return bool
      */
-    public function can(array $configuration, $context = null): bool
+    public function can(array $configuration, $idShoppingList = null): bool
     {
-        if (!$context || !isset($configuration[ShoppingListConfig::PERMISSION_CONFIG_ID_SHOPPING_LIST_COLLECTION])) {
+        if (!$idShoppingList || !isset($configuration[ShoppingListConfig::PERMISSION_CONFIG_ID_SHOPPING_LIST_COLLECTION])) {
             return false;
         }
 
-        return in_array($context, $configuration[ShoppingListConfig::PERMISSION_CONFIG_ID_SHOPPING_LIST_COLLECTION]);
+        return in_array($idShoppingList, $configuration[ShoppingListConfig::PERMISSION_CONFIG_ID_SHOPPING_LIST_COLLECTION]);
     }
 
     /**
