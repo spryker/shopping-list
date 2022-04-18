@@ -5,15 +5,14 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Client\ShoppingList\Deleter;
+namespace Spryker\Client\ShoppingList\Remover;
 
 use Generated\Shared\Transfer\ShoppingListItemResponseTransfer;
 use Generated\Shared\Transfer\ShoppingListItemTransfer;
 use Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToZedRequestClientInterface;
-use Spryker\Client\ShoppingList\Session\ShoppingListSessionDeleterInterface;
 use Spryker\Client\ShoppingList\Zed\ShoppingListStubInterface;
 
-class ShoppingListItemDeleter implements ShoppingListItemDeleterInterface
+class ShoppingListItemRemover implements ShoppingListItemRemoverInterface
 {
     /**
      * @var \Spryker\Client\ShoppingList\Zed\ShoppingListStubInterface
@@ -26,23 +25,23 @@ class ShoppingListItemDeleter implements ShoppingListItemDeleterInterface
     protected $zedRequestClient;
 
     /**
-     * @var \Spryker\Client\ShoppingList\Session\ShoppingListSessionDeleterInterface
+     * @var \Spryker\Client\ShoppingList\Remover\ShoppingListSessionRemoverInterface
      */
-    protected $shoppingListSessionDeleter;
+    protected $shoppingListSessionRemover;
 
     /**
      * @param \Spryker\Client\ShoppingList\Zed\ShoppingListStubInterface $shoppingListStub
      * @param \Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToZedRequestClientInterface $zedRequestClient
-     * @param \Spryker\Client\ShoppingList\Session\ShoppingListSessionDeleterInterface $shoppingListSessionDeleter
+     * @param \Spryker\Client\ShoppingList\Remover\ShoppingListSessionRemoverInterface $shoppingListSessionRemover
      */
     public function __construct(
         ShoppingListStubInterface $shoppingListStub,
         ShoppingListToZedRequestClientInterface $zedRequestClient,
-        ShoppingListSessionDeleterInterface $shoppingListSessionDeleter
+        ShoppingListSessionRemoverInterface $shoppingListSessionRemover
     ) {
         $this->shoppingListStub = $shoppingListStub;
         $this->zedRequestClient = $zedRequestClient;
-        $this->shoppingListSessionDeleter = $shoppingListSessionDeleter;
+        $this->shoppingListSessionRemover = $shoppingListSessionRemover;
     }
 
     /**
@@ -56,11 +55,9 @@ class ShoppingListItemDeleter implements ShoppingListItemDeleterInterface
 
         $this->zedRequestClient->addResponseMessagesToMessenger();
 
-        if (!$shoppingListItemResponseTransfer->getIsSuccess()) {
-            return $shoppingListItemResponseTransfer;
+        if ($shoppingListItemResponseTransfer->getIsSuccess()) {
+            $this->shoppingListSessionRemover->removeShoppingListCollection();
         }
-
-        $this->shoppingListSessionDeleter->removeShoppingListCollection();
 
         return $shoppingListItemResponseTransfer;
     }

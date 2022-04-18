@@ -11,7 +11,7 @@ use Generated\Shared\Transfer\ShoppingListResponseTransfer;
 use Generated\Shared\Transfer\ShoppingListTransfer;
 use Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToZedRequestClientInterface;
 use Spryker\Client\ShoppingList\PermissionUpdater\PermissionUpdaterInterface;
-use Spryker\Client\ShoppingList\Session\ShoppingListSessionDeleterInterface;
+use Spryker\Client\ShoppingList\Remover\ShoppingListSessionRemoverInterface;
 use Spryker\Client\ShoppingList\Zed\ShoppingListStubInterface;
 
 class ShoppingListUpdater implements ShoppingListUpdaterInterface
@@ -32,26 +32,26 @@ class ShoppingListUpdater implements ShoppingListUpdaterInterface
     protected $permissionUpdater;
 
     /**
-     * @var \Spryker\Client\ShoppingList\Session\ShoppingListSessionDeleterInterface
+     * @var \Spryker\Client\ShoppingList\Remover\ShoppingListSessionRemoverInterface
      */
-    protected $shoppingListSessionDeleter;
+    protected $shoppingListSessionRemover;
 
     /**
      * @param \Spryker\Client\ShoppingList\Zed\ShoppingListStubInterface $shoppingListStub
      * @param \Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToZedRequestClientInterface $zedRequestClient
      * @param \Spryker\Client\ShoppingList\PermissionUpdater\PermissionUpdaterInterface $permissionUpdater
-     * @param \Spryker\Client\ShoppingList\Session\ShoppingListSessionDeleterInterface $shoppingListSessionDeleter
+     * @param \Spryker\Client\ShoppingList\Remover\ShoppingListSessionRemoverInterface $shoppingListSessionRemover
      */
     public function __construct(
         ShoppingListStubInterface $shoppingListStub,
         ShoppingListToZedRequestClientInterface $zedRequestClient,
         PermissionUpdaterInterface $permissionUpdater,
-        ShoppingListSessionDeleterInterface $shoppingListSessionDeleter
+        ShoppingListSessionRemoverInterface $shoppingListSessionRemover
     ) {
         $this->shoppingListStub = $shoppingListStub;
         $this->zedRequestClient = $zedRequestClient;
         $this->permissionUpdater = $permissionUpdater;
-        $this->shoppingListSessionDeleter = $shoppingListSessionDeleter;
+        $this->shoppingListSessionRemover = $shoppingListSessionRemover;
     }
 
     /**
@@ -66,11 +66,9 @@ class ShoppingListUpdater implements ShoppingListUpdaterInterface
         $this->zedRequestClient->addResponseMessagesToMessenger();
         $this->permissionUpdater->updateCompanyUserPermissions();
 
-        if (!$shoppingListResponseTransfer->getIsSuccess()) {
-            return $shoppingListResponseTransfer;
+        if ($shoppingListResponseTransfer->getIsSuccess()) {
+            $this->shoppingListSessionRemover->removeShoppingListCollection();
         }
-
-        $this->shoppingListSessionDeleter->removeShoppingListCollection();
 
         return $shoppingListResponseTransfer;
     }
@@ -85,11 +83,10 @@ class ShoppingListUpdater implements ShoppingListUpdaterInterface
         $shoppingListResponseTransfer = $this->shoppingListStub->clearShoppingList($shoppingListTransfer);
 
         $this->zedRequestClient->addFlashMessagesFromLastZedRequest();
-        if (!$shoppingListResponseTransfer->getIsSuccess()) {
-            return $shoppingListResponseTransfer;
-        }
 
-        $this->shoppingListSessionDeleter->removeShoppingListCollection();
+        if ($shoppingListResponseTransfer->getIsSuccess()) {
+            $this->shoppingListSessionRemover->removeShoppingListCollection();
+        }
 
         return $shoppingListResponseTransfer;
     }

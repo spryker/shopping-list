@@ -73,7 +73,7 @@ class ShoppingListClient extends AbstractClient implements ShoppingListClientInt
     public function removeShoppingList(ShoppingListTransfer $shoppingListTransfer): ShoppingListResponseTransfer
     {
         return $this->getFactory()
-            ->createShoppingListDeleter()
+            ->createShoppingListRemover()
             ->remove($shoppingListTransfer);
     }
 
@@ -138,7 +138,7 @@ class ShoppingListClient extends AbstractClient implements ShoppingListClientInt
     public function removeItemById(ShoppingListItemTransfer $shoppingListItemTransfer): ShoppingListItemResponseTransfer
     {
         return $this->getFactory()
-            ->createShoppingListItemDeleter()
+            ->createShoppingListItemRemover()
             ->remove($shoppingListItemTransfer);
     }
 

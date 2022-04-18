@@ -5,9 +5,9 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Client\ShoppingList\Session;
+namespace Spryker\Client\ShoppingList\Remover;
 
-interface ShoppingListSessionDeleterInterface
+interface ShoppingListSessionRemoverInterface
 {
     /**
      * @return void

@@ -30,7 +30,7 @@ interface ShoppingListClientInterface
      * - Creates new shopping list entity if it does not exist.
      * - Updates customer permissions.
      * - Gets messages from zed request and put them to session.
-     * - Removes outdated shopping lists collection from session, if request is successful.
+     * - Removes outdated shopping lists collection from session, if response is successful.
      *
      * @api
      *
@@ -46,7 +46,7 @@ interface ShoppingListClientInterface
      * - Updates shopping list entity if it exist or create new.
      * - Updates customer permissions.
      * - Gets messages from zed request and put them to session.
-     * - Removes outdated shopping lists collection from session, if request is successful.
+     * - Removes outdated shopping lists collection from session, if response is successful.
      *
      * @api
      *
@@ -62,7 +62,7 @@ interface ShoppingListClientInterface
      * - Removes shopping list.
      * - Updates customer permissions.
      * - Gets messages from zed request and put them to session.
-     * - Removes outdated shopping lists collection from session, if request is successful.
+     * - Removes outdated shopping lists collection from session, if response is successful.
      *
      * @api
      *
@@ -77,7 +77,8 @@ interface ShoppingListClientInterface
      * - Makes Zed request.
      * - Remove all shopping list items.
      * - Get messages from Zed request and put them to session.
-     * - Removes outdated shopping lists collection from session, if request is successful.
+     * - Removes outdated shopping lists collection from session, if response is successful.
+     * - Requires `ShoppingListTransfer.items.idShoppingListItem` to be set.
      *
      * @api
      *
@@ -94,7 +95,9 @@ interface ShoppingListClientInterface
      * - Adds item to shopping list.
      * - Updates customer permissions.
      * - Gets messages from zed request and put them to session.
-     * - Removes outdated shopping lists collection from session, if request is successful.
+     * - Removes outdated shopping lists collection from session.
+     * - Requires `ShoppingListItemTransfer.quantity` to be set.
+     * - Requires `ShoppingListItemTransfer.sku` to be set.
      *
      * @api
      *
@@ -111,7 +114,9 @@ interface ShoppingListClientInterface
      * - Adds items to shopping list.
      * - Updates customer permissions.
      * - Gets messages from zed request and put them to session.
-     * - Removes outdated shopping lists collection from session, if request is successful.
+     * - Removes outdated shopping lists collection from session, if response is successful.
+     * - Requires `ShoppingListTransfer.idCompanyUser` to be set.
+     * - Requires `ShoppingListTransfer.customerReference` to be set.
      *
      * @api
      *
@@ -127,7 +132,9 @@ interface ShoppingListClientInterface
      * - Removes item by id.
      * - Updates customer permissions.
      * - Gets messages from zed request and put them to session.
-     * - Removes outdated shopping lists collection from session, if request is successful.
+     * - Removes outdated shopping lists collection from session, if response is successful.
+     * - Requires `ShoppingListItemTransfer.idShoppingListItem` to be set.
+     * - Requires `ShoppingListItemTransfer.fkShoppingList` to be set.
      *
      * @api
      *
@@ -252,7 +259,10 @@ interface ShoppingListClientInterface
      * - Pushes items from quote to shopping list.
      * - Updates customer permissions.
      * - Gets messages from zed request and put them to session.
-     * - Removes outdated shopping lists collection from session, if request is successful.
+     * - Removes outdated shopping lists collection from session.
+     * - Requires `ShoppingListFromCartRequestTransfer.idQuote` to be set.
+     * - Requires `ShoppingListFromCartRequestTransfer.customer` to be set.
+     * - Requires `ShoppingListFromCartRequestTransfer.shoppingListName` to be set, if a shopping list given ID does not exist or the customer does not have write permission.
      *
      * @api
      *

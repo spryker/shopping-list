@@ -16,10 +16,6 @@ use Spryker\Client\ShoppingList\Creator\ShoppingListCreator;
 use Spryker\Client\ShoppingList\Creator\ShoppingListCreatorInterface;
 use Spryker\Client\ShoppingList\Creator\ShoppingListItemCreator;
 use Spryker\Client\ShoppingList\Creator\ShoppingListItemCreatorInterface;
-use Spryker\Client\ShoppingList\Deleter\ShoppingListDeleter;
-use Spryker\Client\ShoppingList\Deleter\ShoppingListDeleterInterface;
-use Spryker\Client\ShoppingList\Deleter\ShoppingListItemDeleter;
-use Spryker\Client\ShoppingList\Deleter\ShoppingListItemDeleterInterface;
 use Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToCartClientInterface;
 use Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToCustomerClientInterface;
 use Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToMessengerClientInterface;
@@ -31,12 +27,14 @@ use Spryker\Client\ShoppingList\PermissionUpdater\PermissionUpdater;
 use Spryker\Client\ShoppingList\PermissionUpdater\PermissionUpdaterInterface;
 use Spryker\Client\ShoppingList\Product\ProductStorage;
 use Spryker\Client\ShoppingList\Product\ProductStorageInterface;
-use Spryker\Client\ShoppingList\Session\ShoppingListSessionDeleter;
-use Spryker\Client\ShoppingList\Session\ShoppingListSessionDeleterInterface;
+use Spryker\Client\ShoppingList\Remover\ShoppingListItemRemover;
+use Spryker\Client\ShoppingList\Remover\ShoppingListItemRemoverInterface;
+use Spryker\Client\ShoppingList\Remover\ShoppingListRemover;
+use Spryker\Client\ShoppingList\Remover\ShoppingListRemoverInterface;
+use Spryker\Client\ShoppingList\Remover\ShoppingListSessionRemover;
+use Spryker\Client\ShoppingList\Remover\ShoppingListSessionRemoverInterface;
 use Spryker\Client\ShoppingList\ShoppingList\ShoppingListAddItemExpander;
 use Spryker\Client\ShoppingList\ShoppingList\ShoppingListAddItemExpanderInterface;
-use Spryker\Client\ShoppingList\Updater\ShoppingListItemUpdater;
-use Spryker\Client\ShoppingList\Updater\ShoppingListItemUpdaterInterface;
 use Spryker\Client\ShoppingList\Updater\ShoppingListUpdater;
 use Spryker\Client\ShoppingList\Updater\ShoppingListUpdaterInterface;
 use Spryker\Client\ShoppingList\Zed\ShoppingListStub;
@@ -184,11 +182,11 @@ class ShoppingListFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Client\ShoppingList\Session\ShoppingListSessionDeleterInterface
+     * @return \Spryker\Client\ShoppingList\Remover\ShoppingListSessionRemoverInterface
      */
-    public function createShoppingListSessionDeleter(): ShoppingListSessionDeleterInterface
+    public function createShoppingListSessionRemover(): ShoppingListSessionRemoverInterface
     {
-        return new ShoppingListSessionDeleter(
+        return new ShoppingListSessionRemover(
             $this->getSessionClient()
         );
     }
@@ -202,7 +200,7 @@ class ShoppingListFactory extends AbstractFactory
             $this->createShoppingListStub(),
             $this->getZedRequestClient(),
             $this->createPermissionUpdater(),
-            $this->createShoppingListSessionDeleter()
+            $this->createShoppingListSessionRemover()
         );
     }
 
@@ -215,7 +213,7 @@ class ShoppingListFactory extends AbstractFactory
             $this->createShoppingListStub(),
             $this->getZedRequestClient(),
             $this->createPermissionUpdater(),
-            $this->createShoppingListSessionDeleter(),
+            $this->createShoppingListSessionRemover(),
             $this->createShoppingListAddItemExpander()
         );
     }
@@ -229,32 +227,32 @@ class ShoppingListFactory extends AbstractFactory
             $this->createShoppingListStub(),
             $this->getZedRequestClient(),
             $this->createPermissionUpdater(),
-            $this->createShoppingListSessionDeleter()
+            $this->createShoppingListSessionRemover()
         );
     }
 
     /**
-     * @return \Spryker\Client\ShoppingList\Deleter\ShoppingListDeleterInterface
+     * @return \Spryker\Client\ShoppingList\Remover\ShoppingListRemoverInterface
      */
-    public function createShoppingListDeleter(): ShoppingListDeleterInterface
+    public function createShoppingListRemover(): ShoppingListRemoverInterface
     {
-        return new ShoppingListDeleter(
+        return new ShoppingListRemover(
             $this->createShoppingListStub(),
             $this->getZedRequestClient(),
             $this->createPermissionUpdater(),
-            $this->createShoppingListSessionDeleter()
+            $this->createShoppingListSessionRemover()
         );
     }
 
     /**
-     * @return \Spryker\Client\ShoppingList\Deleter\ShoppingListItemDeleterInterface
+     * @return \Spryker\Client\ShoppingList\Remover\ShoppingListItemRemoverInterface
      */
-    public function createShoppingListItemDeleter(): ShoppingListItemDeleterInterface
+    public function createShoppingListItemRemover(): ShoppingListItemRemoverInterface
     {
-        return new ShoppingListItemDeleter(
+        return new ShoppingListItemRemover(
             $this->createShoppingListStub(),
             $this->getZedRequestClient(),
-            $this->createShoppingListSessionDeleter()
+            $this->createShoppingListSessionRemover()
         );
     }
 }

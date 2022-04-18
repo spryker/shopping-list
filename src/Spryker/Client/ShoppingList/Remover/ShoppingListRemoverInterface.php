@@ -5,12 +5,12 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Client\ShoppingList\Deleter;
+namespace Spryker\Client\ShoppingList\Remover;
 
 use Generated\Shared\Transfer\ShoppingListResponseTransfer;
 use Generated\Shared\Transfer\ShoppingListTransfer;
 
-interface ShoppingListDeleterInterface
+interface ShoppingListRemoverInterface
 {
     /**
      * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer

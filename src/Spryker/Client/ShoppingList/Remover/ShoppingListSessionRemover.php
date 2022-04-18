@@ -5,11 +5,11 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Client\ShoppingList\Session;
+namespace Spryker\Client\ShoppingList\Remover;
 
 use Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToSessionClientInterface;
 
-class ShoppingListSessionDeleter implements ShoppingListSessionDeleterInterface
+class ShoppingListSessionRemover implements ShoppingListSessionRemoverInterface
 {
     /**
      * @uses \Spryker\Client\ShoppingListSession\Storage\ShoppingListSessionSessionStorage::SESSION_KEY_SHOPPING_LIST_COLLECTION
