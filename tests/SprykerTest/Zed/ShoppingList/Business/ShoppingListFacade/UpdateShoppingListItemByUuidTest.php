@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Zed\ShoppingList\Business\ShoppingList;
+namespace SprykerTest\Zed\ShoppingList\Business\ShoppingListFacade;
 
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\ShoppingListItemCollectionTransfer;
@@ -22,7 +22,7 @@ use SprykerTest\Zed\ShoppingList\ShoppingListBusinessTester;
  * @group Zed
  * @group ShoppingList
  * @group Business
- * @group ShoppingList
+ * @group ShoppingListFacade
  * @group UpdateShoppingListItemByUuidTest
  * Add your own group annotations below this line
  */

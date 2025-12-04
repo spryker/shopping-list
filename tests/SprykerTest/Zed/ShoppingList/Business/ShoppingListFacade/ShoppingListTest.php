@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Zed\ShoppingList\Business\ShoppingList;
+namespace SprykerTest\Zed\ShoppingList\Business\ShoppingListFacade;
 
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\CompanyUserTransfer;
@@ -35,7 +35,7 @@ use SprykerTest\Shared\Testify\Helper\AssertArraySubsetTrait;
  * @group Zed
  * @group ShoppingList
  * @group Business
- * @group ShoppingList
+ * @group ShoppingListFacade
  * @group ShoppingListTest
  * Add your own group annotations below this line
  */
