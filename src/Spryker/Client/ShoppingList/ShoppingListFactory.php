@@ -42,17 +42,11 @@ use Spryker\Client\ShoppingList\Zed\ShoppingListStubInterface;
 
 class ShoppingListFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Client\ShoppingList\Zed\ShoppingListStubInterface
-     */
     public function createShoppingListStub(): ShoppingListStubInterface
     {
         return new ShoppingListStub($this->getZedRequestClient());
     }
 
-    /**
-     * @return \Spryker\Client\ShoppingList\Product\ProductStorageInterface
-     */
     public function createProductStorage(): ProductStorageInterface
     {
         return new ProductStorage(
@@ -61,17 +55,11 @@ class ShoppingListFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToProductClientInterface
-     */
     public function getProductClient(): ShoppingListToProductClientInterface
     {
         return $this->getProvidedDependency(ShoppingListDependencyProvider::CLIENT_PRODUCT);
     }
 
-    /**
-     * @return \Spryker\Client\ShoppingList\Cart\CartHandlerInterface
-     */
     public function createCartHandler(): CartHandlerInterface
     {
         return new CartHandler(
@@ -83,9 +71,6 @@ class ShoppingListFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\ShoppingList\ShoppingList\ShoppingListAddItemExpanderInterface
-     */
     public function createShoppingListAddItemExpander(): ShoppingListAddItemExpanderInterface
     {
         return new ShoppingListAddItemExpander(
@@ -93,57 +78,36 @@ class ShoppingListFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\ShoppingList\Calculation\ShoppingListSubtotalCalculatorInterface
-     */
     public function createShoppingListSubtotalCalculator(): ShoppingListSubtotalCalculatorInterface
     {
         return new ShoppingListSubtotalCalculator();
     }
 
-    /**
-     * @return \Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToCustomerClientInterface
-     */
     public function getCustomerClient(): ShoppingListToCustomerClientInterface
     {
         return $this->getProvidedDependency(ShoppingListDependencyProvider::CLIENT_CUSTOMER);
     }
 
-    /**
-     * @return \Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToPriceProductClientInterface
-     */
     public function getPriceProductClient(): ShoppingListToPriceProductClientInterface
     {
         return $this->getProvidedDependency(ShoppingListDependencyProvider::CLIENT_PRICE_PRODUCT);
     }
 
-    /**
-     * @return \Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToZedRequestClientInterface
-     */
     public function getZedRequestClient(): ShoppingListToZedRequestClientInterface
     {
         return $this->getProvidedDependency(ShoppingListDependencyProvider::CLIENT_ZED_REQUEST);
     }
 
-    /**
-     * @return \Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToCartClientInterface
-     */
     public function getCartClient(): ShoppingListToCartClientInterface
     {
         return $this->getProvidedDependency(ShoppingListDependencyProvider::CLIENT_CART);
     }
 
-    /**
-     * @return \Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToMessengerClientInterface
-     */
     public function getMessengerClient(): ShoppingListToMessengerClientInterface
     {
         return $this->getProvidedDependency(ShoppingListDependencyProvider::CLIENT_MESSENGER);
     }
 
-    /**
-     * @return \Spryker\Client\ShoppingList\PermissionUpdater\PermissionUpdaterInterface
-     */
     public function createPermissionUpdater(): PermissionUpdaterInterface
     {
         return new PermissionUpdater($this->getCustomerClient());
@@ -173,17 +137,11 @@ class ShoppingListFactory extends AbstractFactory
         return $this->getProvidedDependency(ShoppingListDependencyProvider::PLUGINS_ADD_ITEM_SHOPPING_LIST_ITEM_MAPPER);
     }
 
-    /**
-     * @return \Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToSessionClientInterface
-     */
     public function getSessionClient(): ShoppingListToSessionClientInterface
     {
         return $this->getProvidedDependency(ShoppingListDependencyProvider::CLIENT_SESSION);
     }
 
-    /**
-     * @return \Spryker\Client\ShoppingList\Remover\ShoppingListSessionRemoverInterface
-     */
     public function createShoppingListSessionRemover(): ShoppingListSessionRemoverInterface
     {
         return new ShoppingListSessionRemover(
@@ -191,9 +149,6 @@ class ShoppingListFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\ShoppingList\Creator\ShoppingListCreatorInterface
-     */
     public function createShoppingListCreator(): ShoppingListCreatorInterface
     {
         return new ShoppingListCreator(
@@ -204,9 +159,6 @@ class ShoppingListFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\ShoppingList\Creator\ShoppingListItemCreatorInterface
-     */
     public function createShoppingListItemCreator(): ShoppingListItemCreatorInterface
     {
         return new ShoppingListItemCreator(
@@ -219,9 +171,6 @@ class ShoppingListFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\ShoppingList\Updater\ShoppingListUpdaterInterface
-     */
     public function createShoppingListUpdater(): ShoppingListUpdaterInterface
     {
         return new ShoppingListUpdater(
@@ -232,9 +181,6 @@ class ShoppingListFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\ShoppingList\Remover\ShoppingListRemoverInterface
-     */
     public function createShoppingListRemover(): ShoppingListRemoverInterface
     {
         return new ShoppingListRemover(
@@ -245,9 +191,6 @@ class ShoppingListFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\ShoppingList\Remover\ShoppingListItemRemoverInterface
-     */
     public function createShoppingListItemRemover(): ShoppingListItemRemoverInterface
     {
         return new ShoppingListItemRemover(

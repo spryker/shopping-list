@@ -98,11 +98,6 @@ class ShoppingListItemCreator implements ShoppingListItemCreatorInterface
         return $shoppingListItemResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListResponseTransfer
-     */
     public function addItems(ShoppingListTransfer $shoppingListTransfer): ShoppingListResponseTransfer
     {
         $shoppingListTransfer = $this->executeShoppingListExpanderPlugins($shoppingListTransfer);
@@ -118,11 +113,6 @@ class ShoppingListItemCreator implements ShoppingListItemCreatorInterface
         return $shoppingListResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     protected function executeShoppingListExpanderPlugins(ShoppingListTransfer $shoppingListTransfer): ShoppingListTransfer
     {
         foreach ($this->shoppingListExpanderPlugins as $shoppingListExpanderPlugin) {

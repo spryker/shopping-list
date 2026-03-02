@@ -25,19 +25,11 @@ class ProductConcreteIsActiveChecker implements ProductConcreteIsActiveCheckerIn
      */
     protected $productFacade;
 
-    /**
-     * @param \Spryker\Zed\ShoppingList\Dependency\Facade\ShoppingListToProductFacadeInterface $productFacade
-     */
     public function __construct(ShoppingListToProductFacadeInterface $productFacade)
     {
         $this->productFacade = $productFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListPreAddItemCheckResponseTransfer
-     */
     public function checkShoppingListItemProductIsActive(
         ShoppingListItemTransfer $shoppingListItemTransfer
     ): ShoppingListPreAddItemCheckResponseTransfer {

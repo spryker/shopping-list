@@ -27,10 +27,6 @@ class ShoppingListItemExpander implements ShoppingListItemExpanderInterface
      */
     protected ShoppingListExtractorInterface $shoppingListExtractor;
 
-    /**
-     * @param \Spryker\Zed\ShoppingList\Persistence\ShoppingListRepositoryInterface $shoppingListRepository
-     * @param \Spryker\Zed\ShoppingList\Business\Extractor\ShoppingListExtractorInterface $shoppingListExtractor
-     */
     public function __construct(
         ShoppingListRepositoryInterface $shoppingListRepository,
         ShoppingListExtractorInterface $shoppingListExtractor
@@ -39,11 +35,6 @@ class ShoppingListItemExpander implements ShoppingListItemExpanderInterface
         $this->shoppingListExtractor = $shoppingListExtractor;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCollectionTransfer $shoppingListCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCollectionTransfer
-     */
     public function expandShoppingListCollectionWithShoppingListItems(
         ShoppingListCollectionTransfer $shoppingListCollectionTransfer
     ): ShoppingListCollectionTransfer {

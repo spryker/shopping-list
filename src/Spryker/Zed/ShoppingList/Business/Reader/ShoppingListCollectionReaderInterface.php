@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\ShoppingListCriteriaTransfer;
 
 interface ShoppingListCollectionReaderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCriteriaTransfer $shoppingListCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCollectionTransfer
-     */
     public function getShoppingListCollection(ShoppingListCriteriaTransfer $shoppingListCriteriaTransfer): ShoppingListCollectionTransfer;
 }

@@ -48,13 +48,6 @@ class ShoppingListItemOperation implements ShoppingListItemOperationInterface
      */
     protected $pluginExecutor;
 
-    /**
-     * @param \Spryker\Zed\ShoppingList\Persistence\ShoppingListEntityManagerInterface $shoppingListEntityManager
-     * @param \Spryker\Zed\ShoppingList\Persistence\ShoppingListRepositoryInterface $shoppingListRepository
-     * @param \Spryker\Zed\ShoppingList\Business\Model\ShoppingListResolverInterface $shoppingListResolver
-     * @param \Spryker\Zed\ShoppingList\Business\ShoppingListItem\Validator\ShoppingListItemOperationValidatorInterface $shoppingListItemOperationValidator
-     * @param \Spryker\Zed\ShoppingList\Business\ShoppingListItem\ShoppingListItemPluginExecutorInterface $pluginExecutor
-     */
     public function __construct(
         ShoppingListEntityManagerInterface $shoppingListEntityManager,
         ShoppingListRepositoryInterface $shoppingListRepository,
@@ -69,21 +62,11 @@ class ShoppingListItemOperation implements ShoppingListItemOperationInterface
         $this->pluginExecutor = $pluginExecutor;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemTransfer
-     */
     public function addItem(ShoppingListItemTransfer $shoppingListItemTransfer): ShoppingListItemTransfer
     {
         return $this->addShoppingListItem($shoppingListItemTransfer)->getShoppingListItem() ?? $shoppingListItemTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     public function addShoppingListItem(ShoppingListItemTransfer $shoppingListItemTransfer): ShoppingListItemResponseTransfer
     {
         $shoppingListItemTransfer
@@ -108,11 +91,6 @@ class ShoppingListItemOperation implements ShoppingListItemOperationInterface
         return $this->shoppingListItemOperationValidator->invalidateItemAddResponse($shoppingListItemResponseTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return void
-     */
     public function deleteShoppingListItems(ShoppingListTransfer $shoppingListTransfer): void
     {
         $shoppingListItemCollectionTransfer = $this->shoppingListRepository
@@ -123,11 +101,6 @@ class ShoppingListItemOperation implements ShoppingListItemOperationInterface
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListResponseTransfer
-     */
     public function addItems(ShoppingListTransfer $shoppingListTransfer): ShoppingListResponseTransfer
     {
         $shoppingListTransfer
@@ -137,11 +110,6 @@ class ShoppingListItemOperation implements ShoppingListItemOperationInterface
         return $this->executeAddItemsTransaction($shoppingListTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListResponseTransfer
-     */
     protected function executeAddItemsTransaction(ShoppingListTransfer $shoppingListTransfer): ShoppingListResponseTransfer
     {
         return $this->getTransactionHandler()->handleTransaction(function () use ($shoppingListTransfer) {
@@ -164,11 +132,6 @@ class ShoppingListItemOperation implements ShoppingListItemOperationInterface
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     protected function sanitizeItems(ShoppingListTransfer $shoppingListTransfer): ShoppingListTransfer
     {
         foreach ($shoppingListTransfer->getItems() as $shoppingListItemTransfer) {
@@ -178,11 +141,6 @@ class ShoppingListItemOperation implements ShoppingListItemOperationInterface
         return $shoppingListTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     protected function createItems(ShoppingListTransfer $shoppingListTransfer): ShoppingListTransfer
     {
         $updatedShoppingListItemTransfer = [];
@@ -201,11 +159,6 @@ class ShoppingListItemOperation implements ShoppingListItemOperationInterface
         return $shoppingListTransfer->setItems(new ArrayObject($updatedShoppingListItemTransfer));
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     public function removeItemById(ShoppingListItemTransfer $shoppingListItemTransfer): ShoppingListItemResponseTransfer
     {
         $shoppingListItemTransfer
@@ -225,21 +178,11 @@ class ShoppingListItemOperation implements ShoppingListItemOperationInterface
         return $this->deleteShoppingListItem($shoppingListItemTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemTransfer
-     */
     public function saveShoppingListItem(ShoppingListItemTransfer $shoppingListItemTransfer): ShoppingListItemTransfer
     {
         return $this->updateShoppingListItem($shoppingListItemTransfer)->getShoppingListItem() ?? $shoppingListItemTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     public function updateShoppingListItem(
         ShoppingListItemTransfer $shoppingListItemTransfer
     ): ShoppingListItemResponseTransfer {
@@ -263,11 +206,6 @@ class ShoppingListItemOperation implements ShoppingListItemOperationInterface
         return $shoppingListItemResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     public function updateShoppingListItemByUuid(
         ShoppingListItemTransfer $shoppingListItemTransfer
     ): ShoppingListItemResponseTransfer {
@@ -281,11 +219,6 @@ class ShoppingListItemOperation implements ShoppingListItemOperationInterface
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     protected function executeUpdateShoppingListItemByUuidTransaction(
         ShoppingListItemTransfer $shoppingListItemTransfer
     ): ShoppingListItemResponseTransfer {
@@ -306,21 +239,11 @@ class ShoppingListItemOperation implements ShoppingListItemOperationInterface
             ->setIsSuccess(true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemTransfer
-     */
     public function saveShoppingListItemWithoutPermissionsCheck(ShoppingListItemTransfer $shoppingListItemTransfer): ShoppingListItemTransfer
     {
         return $this->saveShoppingListItemTransaction($shoppingListItemTransfer)->getShoppingListItem() ?? $shoppingListItemTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     public function deleteShoppingListItem(ShoppingListItemTransfer $shoppingListItemTransfer): ShoppingListItemResponseTransfer
     {
         $shoppingListItemTransfer = $this->pluginExecutor->executeItemExpanderPlugins($shoppingListItemTransfer);
@@ -330,11 +253,6 @@ class ShoppingListItemOperation implements ShoppingListItemOperationInterface
         return $this->deleteShoppingListItemTransaction($shoppingListItemTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemTransfer
-     */
     protected function executeShoppingListItemCollectionExpanderPluginsForSingleItemTransfer(
         ShoppingListItemTransfer $shoppingListItemTransfer
     ): ShoppingListItemTransfer {
@@ -350,11 +268,6 @@ class ShoppingListItemOperation implements ShoppingListItemOperationInterface
         return $shoppingListItemTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     protected function saveShoppingListItemTransaction(ShoppingListItemTransfer $shoppingListItemTransfer): ShoppingListItemResponseTransfer
     {
         return $this->getTransactionHandler()->handleTransaction(function () use ($shoppingListItemTransfer) {
@@ -370,11 +283,6 @@ class ShoppingListItemOperation implements ShoppingListItemOperationInterface
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     protected function deleteShoppingListItemTransaction(ShoppingListItemTransfer $shoppingListItemTransfer): ShoppingListItemResponseTransfer
     {
         return $this->getTransactionHandler()->handleTransaction(function () use ($shoppingListItemTransfer) {
@@ -385,11 +293,6 @@ class ShoppingListItemOperation implements ShoppingListItemOperationInterface
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     protected function createShoppingListTransfer(ShoppingListItemTransfer $shoppingListItemTransfer): ShoppingListTransfer
     {
         return (new ShoppingListTransfer())
@@ -398,11 +301,6 @@ class ShoppingListItemOperation implements ShoppingListItemOperationInterface
             ->setCustomerReference($shoppingListItemTransfer->getCustomerReference());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     protected function resolveShoppingList(ShoppingListTransfer $shoppingListTransfer): ShoppingListTransfer
     {
         if (!$shoppingListTransfer->getIdShoppingList()) {
@@ -415,12 +313,6 @@ class ShoppingListItemOperation implements ShoppingListItemOperationInterface
         return $shoppingListTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemCollectionTransfer $shoppingListItemCollectionTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return void
-     */
     public function saveShoppingListItemBulk(
         ShoppingListItemCollectionTransfer $shoppingListItemCollectionTransfer,
         ShoppingListTransfer $shoppingListTransfer
@@ -430,12 +322,6 @@ class ShoppingListItemOperation implements ShoppingListItemOperationInterface
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemCollectionTransfer $shoppingListItemCollectionTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return void
-     */
     protected function saveShoppingListItemsCollectionTransaction(
         ShoppingListItemCollectionTransfer $shoppingListItemCollectionTransfer,
         ShoppingListTransfer $shoppingListTransfer

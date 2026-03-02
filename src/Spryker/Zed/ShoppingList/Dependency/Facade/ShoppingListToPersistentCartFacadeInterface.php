@@ -12,11 +12,5 @@ use Generated\Shared\Transfer\QuoteResponseTransfer;
 
 interface ShoppingListToPersistentCartFacadeInterface
 {
-    /**
-     * @param int $idQuote
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteResponseTransfer
-     */
     public function findQuote(int $idQuote, CustomerTransfer $customerTransfer): QuoteResponseTransfer;
 }

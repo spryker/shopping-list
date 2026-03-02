@@ -37,12 +37,6 @@ class ShoppingListCreator implements ShoppingListCreatorInterface
      */
     protected $shoppingListSessionRemover;
 
-    /**
-     * @param \Spryker\Client\ShoppingList\Zed\ShoppingListStubInterface $shoppingListStub
-     * @param \Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToZedRequestClientInterface $zedRequestClient
-     * @param \Spryker\Client\ShoppingList\PermissionUpdater\PermissionUpdaterInterface $permissionUpdater
-     * @param \Spryker\Client\ShoppingList\Remover\ShoppingListSessionRemoverInterface $shoppingListSessionRemover
-     */
     public function __construct(
         ShoppingListStubInterface $shoppingListStub,
         ShoppingListToZedRequestClientInterface $zedRequestClient,
@@ -55,11 +49,6 @@ class ShoppingListCreator implements ShoppingListCreatorInterface
         $this->shoppingListSessionRemover = $shoppingListSessionRemover;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListResponseTransfer
-     */
     public function create(ShoppingListTransfer $shoppingListTransfer): ShoppingListResponseTransfer
     {
         $shoppingListResponseTransfer = $this->shoppingListStub->createShoppingList($shoppingListTransfer);
@@ -74,11 +63,6 @@ class ShoppingListCreator implements ShoppingListCreatorInterface
         return $shoppingListResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListFromCartRequestTransfer $shoppingListFromCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     public function createFromQuote(
         ShoppingListFromCartRequestTransfer $shoppingListFromCartRequestTransfer
     ): ShoppingListTransfer {

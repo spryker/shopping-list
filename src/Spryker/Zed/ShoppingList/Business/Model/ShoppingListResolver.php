@@ -46,12 +46,6 @@ class ShoppingListResolver implements ShoppingListResolverInterface
      */
     protected $messengerFacade;
 
-    /**
-     * @param \Spryker\Zed\ShoppingList\Persistence\ShoppingListEntityManagerInterface $shoppingListEntityManager
-     * @param \Spryker\Zed\ShoppingList\Persistence\ShoppingListRepositoryInterface $shoppingListRepository
-     * @param \Spryker\Zed\ShoppingList\Dependency\Facade\ShoppingListToMessengerFacadeInterface $messengerFacade
-     * @param \Spryker\Zed\ShoppingList\ShoppingListConfig $shoppingListConfig
-     */
     public function __construct(
         ShoppingListEntityManagerInterface $shoppingListEntityManager,
         ShoppingListRepositoryInterface $shoppingListRepository,
@@ -64,12 +58,6 @@ class ShoppingListResolver implements ShoppingListResolverInterface
         $this->messengerFacade = $messengerFacade;
     }
 
-    /**
-     * @param string $customerReference
-     * @param string|null $shoppingListName
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     public function createShoppingListIfNotExists(string $customerReference, ?string $shoppingListName = null): ShoppingListTransfer
     {
         if (!$shoppingListName) {
@@ -83,11 +71,6 @@ class ShoppingListResolver implements ShoppingListResolverInterface
         return $this->resolveShoppingList($shoppingListTransfer);
     }
 
-    /**
-     * @param string $customerReference
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     public function createDefaultShoppingListIfNotExists(string $customerReference): ShoppingListTransfer
     {
         $shoppingListTransfer = (new ShoppingListTransfer())
@@ -97,11 +80,6 @@ class ShoppingListResolver implements ShoppingListResolverInterface
         return $this->resolveShoppingList($shoppingListTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer|null
-     */
     protected function findCustomerShoppingListByName(ShoppingListTransfer $shoppingListTransfer): ?ShoppingListTransfer
     {
         $shoppingListTransfer->requireName();
@@ -110,11 +88,6 @@ class ShoppingListResolver implements ShoppingListResolverInterface
         return $this->shoppingListRepository->findCustomerShoppingListByName($shoppingListTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     protected function resolveShoppingList(ShoppingListTransfer $shoppingListTransfer): ShoppingListTransfer
     {
         $existingShoppingListTransfer = $this->findCustomerShoppingListByName($shoppingListTransfer);
@@ -127,21 +100,11 @@ class ShoppingListResolver implements ShoppingListResolverInterface
         return $existingShoppingListTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     protected function saveShoppingList(ShoppingListTransfer $shoppingListTransfer): ShoppingListTransfer
     {
         return $this->shoppingListEntityManager->saveShoppingList($shoppingListTransfer);
     }
 
-    /**
-     * @param string $shoppingListName
-     *
-     * @return void
-     */
     protected function addCreateSuccessMessage(string $shoppingListName): void
     {
         $this->messengerFacade->addSuccessMessage(

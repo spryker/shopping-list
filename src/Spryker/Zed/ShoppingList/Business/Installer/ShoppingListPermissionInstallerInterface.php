@@ -9,8 +9,5 @@ namespace Spryker\Zed\ShoppingList\Business\Installer;
 
 interface ShoppingListPermissionInstallerInterface
 {
-    /**
-     * @return void
-     */
     public function install(): void;
 }

@@ -36,12 +36,6 @@ class ShoppingListUpdater implements ShoppingListUpdaterInterface
      */
     protected $shoppingListSessionRemover;
 
-    /**
-     * @param \Spryker\Client\ShoppingList\Zed\ShoppingListStubInterface $shoppingListStub
-     * @param \Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToZedRequestClientInterface $zedRequestClient
-     * @param \Spryker\Client\ShoppingList\PermissionUpdater\PermissionUpdaterInterface $permissionUpdater
-     * @param \Spryker\Client\ShoppingList\Remover\ShoppingListSessionRemoverInterface $shoppingListSessionRemover
-     */
     public function __construct(
         ShoppingListStubInterface $shoppingListStub,
         ShoppingListToZedRequestClientInterface $zedRequestClient,
@@ -54,11 +48,6 @@ class ShoppingListUpdater implements ShoppingListUpdaterInterface
         $this->shoppingListSessionRemover = $shoppingListSessionRemover;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListResponseTransfer
-     */
     public function update(ShoppingListTransfer $shoppingListTransfer): ShoppingListResponseTransfer
     {
         $shoppingListResponseTransfer = $this->shoppingListStub->updateShoppingList($shoppingListTransfer);
@@ -73,11 +62,6 @@ class ShoppingListUpdater implements ShoppingListUpdaterInterface
         return $shoppingListResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListResponseTransfer
-     */
     public function clearShoppingList(ShoppingListTransfer $shoppingListTransfer): ShoppingListResponseTransfer
     {
         $shoppingListResponseTransfer = $this->shoppingListStub->clearShoppingList($shoppingListTransfer);

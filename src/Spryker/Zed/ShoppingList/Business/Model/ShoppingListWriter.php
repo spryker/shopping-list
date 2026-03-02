@@ -74,14 +74,6 @@ class ShoppingListWriter implements ShoppingListWriterInterface
      */
     protected $pluginExecutor;
 
-    /**
-     * @param \Spryker\Zed\ShoppingList\Persistence\ShoppingListEntityManagerInterface $shoppingListEntityManager
-     * @param \Spryker\Zed\ShoppingList\Persistence\ShoppingListRepositoryInterface $shoppingListRepository
-     * @param \Spryker\Zed\ShoppingList\Dependency\Facade\ShoppingListToEventFacadeInterface $eventFacade
-     * @param \Spryker\Zed\ShoppingList\Business\Model\ShoppingListItemOperationInterface $shoppingListItemOperation
-     * @param \Spryker\Zed\ShoppingList\Business\Model\ShoppingListReaderInterface $shoppingListReader
-     * @param \Spryker\Zed\ShoppingList\Business\ShoppingListItem\ShoppingListItemPluginExecutorInterface $pluginExecutor
-     */
     public function __construct(
         ShoppingListEntityManagerInterface $shoppingListEntityManager,
         ShoppingListRepositoryInterface $shoppingListRepository,
@@ -98,11 +90,6 @@ class ShoppingListWriter implements ShoppingListWriterInterface
         $this->pluginExecutor = $pluginExecutor;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListResponseTransfer
-     */
     public function validateAndSaveShoppingList(ShoppingListTransfer $shoppingListTransfer): ShoppingListResponseTransfer
     {
         $shoppingListResponseTransfer = new ShoppingListResponseTransfer();
@@ -126,11 +113,6 @@ class ShoppingListWriter implements ShoppingListWriterInterface
         return $shoppingListResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListResponseTransfer
-     */
     public function removeShoppingList(ShoppingListTransfer $shoppingListTransfer): ShoppingListResponseTransfer
     {
         $shoppingListTransfer = $this->shoppingListRepository->findShoppingListById($shoppingListTransfer);
@@ -150,11 +132,6 @@ class ShoppingListWriter implements ShoppingListWriterInterface
         );
     }
 
-    /**
-     * @param string $message
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListResponseTransfer
-     */
     protected function createShoppingListErrorResponseTransfer(string $message): ShoppingListResponseTransfer
     {
         $shoppingListResponseTransfer = new ShoppingListResponseTransfer();
@@ -164,11 +141,6 @@ class ShoppingListWriter implements ShoppingListWriterInterface
         return $shoppingListResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     public function saveShoppingList(ShoppingListTransfer $shoppingListTransfer): ShoppingListTransfer
     {
         return $this->getTransactionHandler()->handleTransaction(
@@ -178,11 +150,6 @@ class ShoppingListWriter implements ShoppingListWriterInterface
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListResponseTransfer
-     */
     public function clearShoppingList(ShoppingListTransfer $shoppingListTransfer): ShoppingListResponseTransfer
     {
         $shoppingListTransfer = $this->shoppingListReader->getShoppingList($shoppingListTransfer);
@@ -194,11 +161,6 @@ class ShoppingListWriter implements ShoppingListWriterInterface
         return $this->deleteShoppingListItems($shoppingListTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListResponseTransfer
-     */
     protected function deleteShoppingListItems(ShoppingListTransfer $shoppingListTransfer): ShoppingListResponseTransfer
     {
         $this->getTransactionHandler()->handleTransaction(function () use ($shoppingListTransfer) {
@@ -208,11 +170,6 @@ class ShoppingListWriter implements ShoppingListWriterInterface
         return (new ShoppingListResponseTransfer())->setIsSuccess(true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return bool
-     */
     protected function checkShoppingListWithSameName(ShoppingListTransfer $shoppingListTransfer): bool
     {
         $foundShoppingListTransfer = $this->findCustomerShoppingListByName($shoppingListTransfer);
@@ -220,11 +177,6 @@ class ShoppingListWriter implements ShoppingListWriterInterface
         return $foundShoppingListTransfer && ($foundShoppingListTransfer->getIdShoppingList() !== $shoppingListTransfer->getIdShoppingList());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer|null
-     */
     public function findCustomerShoppingListByName(ShoppingListTransfer $shoppingListTransfer): ?ShoppingListTransfer
     {
         $shoppingListTransfer->requireName();
@@ -233,11 +185,6 @@ class ShoppingListWriter implements ShoppingListWriterInterface
         return $this->shoppingListRepository->findCustomerShoppingListByName($shoppingListTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return bool
-     */
     protected function checkWritePermission(ShoppingListTransfer $shoppingListTransfer): bool
     {
         if (!$shoppingListTransfer->getIdShoppingList()) {
@@ -255,11 +202,6 @@ class ShoppingListWriter implements ShoppingListWriterInterface
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListResponseTransfer
-     */
     protected function executeRemoveShoppingListTransaction(ShoppingListTransfer $shoppingListTransfer): ShoppingListResponseTransfer
     {
         $this->shoppingListItemOperation->deleteShoppingListItems($shoppingListTransfer);
@@ -272,11 +214,6 @@ class ShoppingListWriter implements ShoppingListWriterInterface
         return (new ShoppingListResponseTransfer())->setIsSuccess(true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     protected function executeSaveShoppingListTransaction(ShoppingListTransfer $shoppingListTransfer): ShoppingListTransfer
     {
         $shoppingListTransfer = $this->shoppingListEntityManager->saveShoppingList($shoppingListTransfer);
@@ -292,11 +229,6 @@ class ShoppingListWriter implements ShoppingListWriterInterface
         return $shoppingListTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return void
-     */
     protected function triggerShoppingListUnpublishEvent(ShoppingListTransfer $shoppingListTransfer): void
     {
         $eventTransfer = (new EventEntityTransfer())
@@ -309,11 +241,6 @@ class ShoppingListWriter implements ShoppingListWriterInterface
         $this->eventFacade->trigger(ShoppingListEvents::SHOPPING_LIST_UNPUBLISH, $eventTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return void
-     */
     protected function executeDeleteShoppingListItemsTransaction(ShoppingListTransfer $shoppingListTransfer): void
     {
         foreach ($shoppingListTransfer->getItems() as $shoppingListItemTransfer) {
@@ -321,11 +248,6 @@ class ShoppingListWriter implements ShoppingListWriterInterface
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return void
-     */
     protected function deleteShoppingListItem(ShoppingListItemTransfer $shoppingListItemTransfer): void
     {
         $shoppingListItemTransfer->requireIdShoppingListItem();

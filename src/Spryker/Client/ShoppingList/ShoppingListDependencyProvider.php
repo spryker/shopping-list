@@ -97,11 +97,6 @@ class ShoppingListDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addPriceProductClient(Container $container): Container
     {
         $container->set(static::CLIENT_PRICE_PRODUCT, function (Container $container) {
@@ -111,11 +106,6 @@ class ShoppingListDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addCustomerClient(Container $container): Container
     {
         $container->set(static::CLIENT_CUSTOMER, function (Container $container) {
@@ -125,11 +115,6 @@ class ShoppingListDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addCartClient(Container $container): Container
     {
         $container->set(static::CLIENT_CART, function (Container $container) {
@@ -139,11 +124,6 @@ class ShoppingListDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addProductClient(Container $container): Container
     {
         $container->set(static::CLIENT_PRODUCT, function (Container $container) {
@@ -153,11 +133,6 @@ class ShoppingListDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addZedRequestClient(Container $container): Container
     {
         $container->set(static::CLIENT_ZED_REQUEST, function (Container $container) {
@@ -167,11 +142,6 @@ class ShoppingListDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addMessengerClient(Container $container): Container
     {
         $container->set(static::CLIENT_MESSENGER, function (Container $container) {
@@ -181,11 +151,6 @@ class ShoppingListDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addSessionClient(Container $container): Container
     {
         $container->set(static::CLIENT_SESSION, function (Container $container) {
@@ -195,11 +160,6 @@ class ShoppingListDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addShoppingListItemToItemMapperPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_SHOPPING_LIST_ITEM_TO_ITEM_MAPPER, function () {
@@ -209,11 +169,6 @@ class ShoppingListDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addQuoteItemToItemMapperPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_QUOTE_ITEM_TO_ITEM_MAPPER, function () {
@@ -223,11 +178,6 @@ class ShoppingListDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addAddItemShoppingListItemMapperPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_ADD_ITEM_SHOPPING_LIST_ITEM_MAPPER, function () {
@@ -237,11 +187,6 @@ class ShoppingListDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addShoppingListExpanderPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_SHOPPING_LIST_EXPANDER, function () {

@@ -30,9 +30,6 @@ class UnShareCompanyUserShoppingListsTest extends Unit
      */
     protected ShoppingListBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function testUnShareCompanyUserShoppingListDeletesAllCompanyBusinessUnitBlacklistsAndSharedShoppingLists(): void
     {
         // Arrange
@@ -89,9 +86,6 @@ class UnShareCompanyUserShoppingListsTest extends Unit
         $this->assertNotNull($persistedShoppingListTransfer2);
     }
 
-    /**
-     * @return void
-     */
     public function testUnShareCompanyUserShoppingListDeletesSharedShoppingListsButNotCompanyBusinessUnitBlacklists(): void
     {
         // Arrange
@@ -150,9 +144,6 @@ class UnShareCompanyUserShoppingListsTest extends Unit
         $this->assertNotNull($persistedShoppingListTransfer2);
     }
 
-    /**
-     * @return void
-     */
     public function testUnShareCompanyUserShoppingListShouldUnShareShoppingListOnlyForRequestedUser(): void
     {
         // Arrange

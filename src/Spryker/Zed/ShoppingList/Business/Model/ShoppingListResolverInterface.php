@@ -11,18 +11,7 @@ use Generated\Shared\Transfer\ShoppingListTransfer;
 
 interface ShoppingListResolverInterface
 {
-    /**
-     * @param string $customerReference
-     * @param string|null $shoppingListName
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     public function createShoppingListIfNotExists(string $customerReference, ?string $shoppingListName = null): ShoppingListTransfer;
 
-    /**
-     * @param string $customerReference
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     public function createDefaultShoppingListIfNotExists(string $customerReference): ShoppingListTransfer;
 }

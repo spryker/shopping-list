@@ -30,9 +30,6 @@ class ShoppingListSubtotalCalculatorTest extends Unit
      */
     protected $shoppingListSubtotalCalculator;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -40,9 +37,6 @@ class ShoppingListSubtotalCalculatorTest extends Unit
         $this->shoppingListSubtotalCalculator = new ShoppingListSubtotalCalculator();
     }
 
-    /**
-     * @return void
-     */
     public function testCalculateShoppingListSubtotalShouldCalculatePricesCorrectly(): void
     {
         // Arrange
@@ -66,9 +60,6 @@ class ShoppingListSubtotalCalculatorTest extends Unit
         $this->assertSame($calculatedShoppingListSubtotal, $expectedShoppingListSubtotal);
     }
 
-    /**
-     * @return void
-     */
     public function testCalculateShoppingListSubtotalShouldThrowExceptionIfCurrentPriceProductIsNotDefined(): void
     {
         // Arrange
@@ -83,11 +74,6 @@ class ShoppingListSubtotalCalculatorTest extends Unit
         $this->shoppingListSubtotalCalculator->calculateShoppingListSubtotal($shoppingListItemProductViews);
     }
 
-    /**
-     * @param int $sumPrice
-     *
-     * @return \Generated\Shared\Transfer\CurrentProductPriceTransfer
-     */
     protected function createCurrentProductPriceTransferWithSumPrice(int $sumPrice): CurrentProductPriceTransfer
     {
         return (new CurrentProductPriceTransfer())->setSumPrice($sumPrice);

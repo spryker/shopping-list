@@ -25,10 +25,5 @@ interface ShoppingListItemCreatorInterface
         array $params = []
     ): ShoppingListItemResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListResponseTransfer
-     */
     public function addItems(ShoppingListTransfer $shoppingListTransfer): ShoppingListResponseTransfer;
 }

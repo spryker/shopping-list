@@ -24,10 +24,6 @@ class ProductStorage implements ProductStorageInterface
      */
     protected $priceProductClient;
 
-    /**
-     * @param \Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToProductClientInterface $productClient
-     * @param \Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToPriceProductClientInterface $priceProductClient
-     */
     public function __construct(
         ShoppingListToProductClientInterface $productClient,
         ShoppingListToPriceProductClientInterface $priceProductClient
@@ -36,11 +32,6 @@ class ProductStorage implements ProductStorageInterface
         $this->priceProductClient = $priceProductClient;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListOverviewResponseTransfer $shoppingListResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListOverviewResponseTransfer
-     */
     public function expandProductDetails(ShoppingListOverviewResponseTransfer $shoppingListResponseTransfer): ShoppingListOverviewResponseTransfer
     {
         $productSkuCollection = $this->getProductSkuCollection($shoppingListResponseTransfer);
@@ -54,11 +45,6 @@ class ProductStorage implements ProductStorageInterface
         return $shoppingListResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListOverviewResponseTransfer $shoppingListResponseTransfer
-     *
-     * @return array
-     */
     protected function getProductSkuCollection(ShoppingListOverviewResponseTransfer $shoppingListResponseTransfer): array
     {
         $productSkuCollection = [];
@@ -69,12 +55,6 @@ class ProductStorage implements ProductStorageInterface
         return $productSkuCollection;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListOverviewResponseTransfer $shoppingListResponseTransfer
-     * @param array $productSkuCollection
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemCollectionTransfer
-     */
     protected function getValidShoppingListItems(
         ShoppingListOverviewResponseTransfer $shoppingListResponseTransfer,
         array $productSkuCollection

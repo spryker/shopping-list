@@ -9,8 +9,5 @@ namespace Spryker\Client\ShoppingList\Remover;
 
 interface ShoppingListSessionRemoverInterface
 {
-    /**
-     * @return void
-     */
     public function removeShoppingListCollection(): void;
 }

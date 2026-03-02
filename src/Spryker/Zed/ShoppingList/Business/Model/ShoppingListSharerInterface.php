@@ -13,42 +13,17 @@ use Generated\Shared\Transfer\ShoppingListTransfer;
 
 interface ShoppingListSharerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListShareRequestTransfer $shoppingListShareRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListShareResponseTransfer
-     */
     public function shareShoppingListWithCompanyBusinessUnit(
         ShoppingListShareRequestTransfer $shoppingListShareRequestTransfer
     ): ShoppingListShareResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListShareRequestTransfer $shoppingListShareRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListShareResponseTransfer
-     */
     public function shareShoppingListWithCompanyUser(ShoppingListShareRequestTransfer $shoppingListShareRequestTransfer): ShoppingListShareResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListShareRequestTransfer $shoppingListShareRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListShareResponseTransfer
-     */
     public function unShareShoppingListCompanyBusinessUnit(
         ShoppingListShareRequestTransfer $shoppingListShareRequestTransfer
     ): ShoppingListShareResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListShareRequestTransfer $shoppingListShareRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListShareResponseTransfer
-     */
     public function unShareCompanyUserShoppingLists(ShoppingListShareRequestTransfer $shoppingListShareRequestTransfer): ShoppingListShareResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListShareResponseTransfer
-     */
     public function updateShoppingListSharedEntities(ShoppingListTransfer $shoppingListTransfer): ShoppingListShareResponseTransfer;
 }

@@ -17,20 +17,11 @@ class ShoppingListItemDeleteOperationValidator implements ShoppingListItemDelete
      */
     protected $shoppingListItemValidator;
 
-    /**
-     * @param \Spryker\Zed\ShoppingList\Business\ShoppingListItem\Validator\ShoppingListItemValidatorInterface $shoppingListItemValidator
-     */
     public function __construct(ShoppingListItemValidatorInterface $shoppingListItemValidator)
     {
         $this->shoppingListItemValidator = $shoppingListItemValidator;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     public function validateRequest(
         ShoppingListItemTransfer $shoppingListItemTransfer,
         ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer

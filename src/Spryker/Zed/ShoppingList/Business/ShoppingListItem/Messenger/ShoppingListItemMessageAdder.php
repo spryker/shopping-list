@@ -32,19 +32,11 @@ class ShoppingListItemMessageAdder implements ShoppingListItemMessageAdderInterf
      */
     protected $messengerFacade;
 
-    /**
-     * @param \Spryker\Zed\ShoppingList\Dependency\Facade\ShoppingListToMessengerFacadeInterface $messengerFacade
-     */
     public function __construct(ShoppingListToMessengerFacadeInterface $messengerFacade)
     {
         $this->messengerFacade = $messengerFacade;
     }
 
-    /**
-     * @param string $sku
-     *
-     * @return void
-     */
     public function addShoppingListItemAddingSuccessMessage(string $sku): void
     {
         $this->messengerFacade->addSuccessMessage(
@@ -54,11 +46,6 @@ class ShoppingListItemMessageAdder implements ShoppingListItemMessageAdderInterf
         );
     }
 
-    /**
-     * @param string $sku
-     *
-     * @return void
-     */
     public function addShoppingListItemAddingFailedMessage(string $sku): void
     {
         $this->messengerFacade->addErrorMessage(

@@ -55,9 +55,6 @@ class FindCompanyUserPermissionsTest extends Unit
      */
     protected ShoppingListBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function testShouldReturnEmptyCompanyUserPermissionCollectionWhileCompanyUserIsUnknown(): void
     {
         // Act
@@ -69,9 +66,6 @@ class FindCompanyUserPermissionsTest extends Unit
         $this->assertCount(0, $permissionCollectionTransfer->getPermissions());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnWriteAndReadPermissionForShoppingListOwner(): void
     {
         // Arrange

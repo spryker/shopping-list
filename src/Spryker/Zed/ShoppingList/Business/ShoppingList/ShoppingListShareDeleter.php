@@ -49,12 +49,6 @@ class ShoppingListShareDeleter implements ShoppingListShareDeleterInterface
      */
     protected $eventFacade;
 
-    /**
-     * @param \Spryker\Zed\ShoppingList\Persistence\ShoppingListEntityManagerInterface $shoppingListEntityManager
-     * @param \Spryker\Zed\ShoppingList\Persistence\ShoppingListRepositoryInterface $shoppingListRepository
-     * @param \Spryker\Zed\ShoppingList\Dependency\Facade\ShoppingListToCompanyUserFacadeInterface $companyUserFacade
-     * @param \Spryker\Zed\ShoppingList\Dependency\Facade\ShoppingListToEventFacadeInterface $eventFacade
-     */
     public function __construct(
         ShoppingListEntityManagerInterface $shoppingListEntityManager,
         ShoppingListRepositoryInterface $shoppingListRepository,
@@ -67,11 +61,6 @@ class ShoppingListShareDeleter implements ShoppingListShareDeleterInterface
         $this->eventFacade = $eventFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListDismissRequestTransfer $shoppingListDismissRequest
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListShareResponseTransfer
-     */
     public function dismissShoppingListSharing(ShoppingListDismissRequestTransfer $shoppingListDismissRequest): ShoppingListShareResponseTransfer
     {
         $shoppingListDismissRequest->requireIdCompanyUser()
@@ -94,11 +83,6 @@ class ShoppingListShareDeleter implements ShoppingListShareDeleterInterface
         return (new ShoppingListShareResponseTransfer())->setIsSuccess(true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListDismissRequestTransfer $shoppingListDismissRequest
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListShareResponseTransfer
-     */
     protected function executeDismissShoppingListSharingTransaction(
         ShoppingListDismissRequestTransfer $shoppingListDismissRequest
     ): ShoppingListShareResponseTransfer {
@@ -111,11 +95,6 @@ class ShoppingListShareDeleter implements ShoppingListShareDeleterInterface
         return $shoppingListShareResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListDismissRequestTransfer $shoppingListDismissRequest
-     *
-     * @return bool
-     */
     protected function deleteShoppingListCompanyUser(ShoppingListDismissRequestTransfer $shoppingListDismissRequest): bool
     {
         $shoppingListCompanyUserTransfer = (new ShoppingListCompanyUserTransfer())
@@ -132,11 +111,6 @@ class ShoppingListShareDeleter implements ShoppingListShareDeleterInterface
         return true;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListDismissRequestTransfer $shoppingListDismissRequest
-     *
-     * @return bool
-     */
     protected function createShoppingListCompanyBusinessUnitBlacklist(ShoppingListDismissRequestTransfer $shoppingListDismissRequest): bool
     {
         $companyUserTransfer = $this->companyUserFacade->getCompanyUserById($shoppingListDismissRequest->getIdCompanyUser());
@@ -161,12 +135,6 @@ class ShoppingListShareDeleter implements ShoppingListShareDeleterInterface
         return true;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCompanyBusinessUnitCollectionTransfer $shoppingListCompanyBusinessUnitCollectionTransfer
-     * @param int $idCompanyBusinessUnit
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCompanyBusinessUnitTransfer|null
-     */
     protected function findShoppingListCompanyBusinessUnitByIdBusinessUnit(
         ShoppingListCompanyBusinessUnitCollectionTransfer $shoppingListCompanyBusinessUnitCollectionTransfer,
         int $idCompanyBusinessUnit
@@ -180,12 +148,6 @@ class ShoppingListShareDeleter implements ShoppingListShareDeleterInterface
         return null;
     }
 
-    /**
-     * @param int $idShoppingList
-     * @param \Generated\Shared\Transfer\CompanyUserTransfer $companyUserTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCompanyBusinessUnitTransfer|null
-     */
     protected function findShoppingListBusinessUnit(int $idShoppingList, CompanyUserTransfer $companyUserTransfer): ?ShoppingListCompanyBusinessUnitTransfer
     {
         $shoppingListCompanyBusinessUnitCollectionTransfer = $this->shoppingListRepository->getShoppingListCompanyBusinessUnitsByShoppingListId(
@@ -199,12 +161,6 @@ class ShoppingListShareDeleter implements ShoppingListShareDeleterInterface
         return $shoppingListCompanyBusinessUnitTransfer;
     }
 
-    /**
-     * @param int $idShoppingList
-     * @param \Generated\Shared\Transfer\CompanyUserTransfer $companyUserTransfer
-     *
-     * @return void
-     */
     protected function triggerShoppingListUnpublishEvent(int $idShoppingList, CompanyUserTransfer $companyUserTransfer): void
     {
         if ($companyUserTransfer->getCustomer() === null) {

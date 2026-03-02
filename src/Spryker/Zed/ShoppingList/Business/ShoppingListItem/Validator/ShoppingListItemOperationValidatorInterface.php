@@ -14,54 +14,25 @@ use Generated\Shared\Transfer\ShoppingListTransfer;
 
 interface ShoppingListItemOperationValidatorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     public function invalidateItemAddResponse(
         ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
     ): ShoppingListItemResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     public function validateItemAddRequest(
         ShoppingListItemTransfer $shoppingListItemTransfer,
         ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
     ): ShoppingListItemResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListResponseTransfer $shoppingListResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListResponseTransfer
-     */
     public function validateItemAddBulkRequest(
         ShoppingListTransfer $shoppingListTransfer,
         ShoppingListResponseTransfer $shoppingListResponseTransfer
     ): ShoppingListResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     public function validateItemDeleteRequest(
         ShoppingListItemTransfer $shoppingListItemTransfer,
         ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
     ): ShoppingListItemResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     public function validateItemUpdateRequest(
         ShoppingListItemTransfer $shoppingListItemTransfer,
         ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer

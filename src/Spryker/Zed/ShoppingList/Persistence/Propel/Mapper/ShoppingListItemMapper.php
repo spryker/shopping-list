@@ -51,12 +51,6 @@ class ShoppingListItemMapper implements ShoppingListItemMapperInterface
         return $shoppingListItemCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SpyShoppingListItemEntityTransfer $itemEntityTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemTransfer
-     */
     public function mapItemTransfer(
         SpyShoppingListItemEntityTransfer $itemEntityTransfer,
         ShoppingListItemTransfer $shoppingListItemTransfer
@@ -64,12 +58,6 @@ class ShoppingListItemMapper implements ShoppingListItemMapperInterface
         return $shoppingListItemTransfer->fromArray($itemEntityTransfer->modifiedToArray(), true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     * @param \Orm\Zed\ShoppingList\Persistence\SpyShoppingListItem $shoppingListItemEntity
-     *
-     * @return \Orm\Zed\ShoppingList\Persistence\SpyShoppingListItem
-     */
     public function mapTransferToEntity(
         ShoppingListItemTransfer $shoppingListItemTransfer,
         SpyShoppingListItem $shoppingListItemEntity
@@ -79,12 +67,6 @@ class ShoppingListItemMapper implements ShoppingListItemMapperInterface
         return $shoppingListItemEntity;
     }
 
-    /**
-     * @param \Orm\Zed\ShoppingList\Persistence\SpyShoppingListItem $shoppingListItemEntity
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemTransfer
-     */
     public function mapSpyShoppingListItemEntityToShoppingListItemTransfer(
         SpyShoppingListItem $shoppingListItemEntity,
         ShoppingListItemTransfer $shoppingListItemTransfer

@@ -81,9 +81,6 @@ class ShoppingListItemTest extends Unit
      */
     protected const GLOSSARY_KEY_PRODUCT_STORE_INVALID = 'shopping_list.pre.check.product.store_invalid';
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -136,9 +133,6 @@ class ShoppingListItemTest extends Unit
         $this->tester->haveProductInStock([StockProductTransfer::SKU => $this->productTwo->getSku()]);
     }
 
-    /**
-     * @return void
-     */
     public function testOwnerCanAddItemToShoppingList(): void
     {
         // Arrange
@@ -157,9 +151,6 @@ class ShoppingListItemTest extends Unit
         $this->assertNotNull($resultShoppingListItemTransfer->getIdShoppingListItem(), 'Owner should be able to add item to shopping list.');
     }
 
-    /**
-     * @return void
-     */
     public function testOwnerCanNotAddItemWithNonPositiveQuantityToShoppingList(): void
     {
         $quantities = [0, -1];
@@ -182,9 +173,6 @@ class ShoppingListItemTest extends Unit
         }
     }
 
-    /**
-     * @return void
-     */
     public function testCustomerCanNotAddItemToSharedShoppingList(): void
     {
         // Arrange
@@ -203,9 +191,6 @@ class ShoppingListItemTest extends Unit
         $this->assertNull($resultShoppingListItemTransfer->getIdShoppingListItem(), 'Shared shopping list should not modified by customer.');
     }
 
-    /**
-     * @return void
-     */
     public function testOwnerCanGetListOfShoppingListItems(): void
     {
         // Arrange
@@ -238,9 +223,6 @@ class ShoppingListItemTest extends Unit
         $this->assertSame(2, $shoppingListItemResponseTransfer->getItems()->count(), 'Customer should be able to load shopping list items by shopping lists.');
     }
 
-    /**
-     * @return void
-     */
     public function testSharedCompanyUserWithFullAccessPermissionCanAddItemToShoppingList(): void
     {
         // Arrange
@@ -271,9 +253,6 @@ class ShoppingListItemTest extends Unit
         $this->assertSame(1, $shoppingListItemResponseTransfer->getItems()->count(), 'Shared company user with full access permission can add item to shopping list.');
     }
 
-    /**
-     * @return void
-     */
     public function testSharedCompanyUserWithReadOnlyPermissionCanNotAddItemToShoppingList(): void
     {
         // Arrange
@@ -304,9 +283,6 @@ class ShoppingListItemTest extends Unit
         $this->assertSame(0, $shoppingListItemResponseTransfer->getItems()->count(), 'Shared company user with read only permission can not add item to shopping list.');
     }
 
-    /**
-     * @return void
-     */
     public function testGetCustomerShoppingListCollection(): void
     {
         // Arrange
@@ -334,9 +310,6 @@ class ShoppingListItemTest extends Unit
         $this->assertSame(3, $shoppingListItemResponseTransfer->getShoppingLists()[0]->getNumberOfItems(), 'Customer should get correct count of items in the shopping list.');
     }
 
-    /**
-     * @return void
-     */
     public function testCustomerCanGetItemListOfSharedShoppingList(): void
     {
         // Arrange
@@ -369,9 +342,6 @@ class ShoppingListItemTest extends Unit
         $this->assertSame(1, $shoppingListItemResponseTransfer->getItems()->count(), 'Customer should be able to load shopping list items from shared shopping lists.');
     }
 
-    /**
-     * @return void
-     */
     public function testOnlyConcreteProductCanBeAddedToShoppingList(): void
     {
         // Arrange
@@ -390,9 +360,6 @@ class ShoppingListItemTest extends Unit
         $this->assertNull($resultShoppingListItemTransfer->getIdShoppingListItem(), 'Abstract product should not be able to be added to shopping list.');
     }
 
-    /**
-     * @return void
-     */
     public function testOwnerCanAddShoppingListItemToShoppingList(): void
     {
         // Arrange
@@ -414,9 +381,6 @@ class ShoppingListItemTest extends Unit
         $this->assertNotNull($resultShoppingListItemResponseTransfer->getShoppingListItem(), 'Owner should be able to add item to shopping list.');
     }
 
-    /**
-     * @return void
-     */
     public function testOwnerCanNotAddShoppingListItemWithNonPositiveQuantityToShoppingList(): void
     {
         /** @var \Spryker\Zed\ShoppingList\Business\ShoppingListFacadeInterface $shoppingListFacade */
@@ -444,9 +408,6 @@ class ShoppingListItemTest extends Unit
         }
     }
 
-    /**
-     * @return void
-     */
     public function testCustomerCanNotAddShoppingListItemToSharedShoppingList(): void
     {
         // Arrange
@@ -469,9 +430,6 @@ class ShoppingListItemTest extends Unit
         $this->assertNull($resultShoppingListItemResponseTransfer->getShoppingListItem(), 'Shared shopping list should not modified by customer.');
     }
 
-    /**
-     * @return void
-     */
     public function testOwnerCanRemoveItemFromShoppingList(): void
     {
         // Arrange
@@ -493,9 +451,6 @@ class ShoppingListItemTest extends Unit
         $this->assertTrue($shoppingListItemResponseTransfer->getIsSuccess(), 'Owner should be able to remove item from shopping list.');
     }
 
-    /**
-     * @return void
-     */
     public function testOwnerShouldBeAbleToRemoveShoppingListItemsFromShoppingList(): void
     {
         // Arrange
@@ -536,9 +491,6 @@ class ShoppingListItemTest extends Unit
         $this->assertCount(1, $shoppingListItemCollectionTransfer->getItems());
     }
 
-    /**
-     * @return void
-     */
     public function testCustomerCannotRemoveShoppingListItemsFromSharedShoppingList(): void
     {
         // Arrange
@@ -570,9 +522,6 @@ class ShoppingListItemTest extends Unit
         $this->assertCount(1, $shoppingListItemCollectionTransfer->getItems());
     }
 
-    /**
-     * @return void
-     */
     public function testSharedCompanyUserWithFullAccessPermissionCanAddShoppingListItemToShoppingList(): void
     {
         // Arrange
@@ -605,9 +554,6 @@ class ShoppingListItemTest extends Unit
         $this->assertSame(1, $shoppingListItemResponseTransfer->getItems()->count(), 'Shared company user with full access permission can add item to shopping list.');
     }
 
-    /**
-     * @return void
-     */
     public function testSharedCompanyUserWithReadOnlyPermissionCanNotAddShoppingListItemToShoppingList(): void
     {
         // Arrange
@@ -640,9 +586,6 @@ class ShoppingListItemTest extends Unit
         $this->assertSame(0, $shoppingListItemResponseTransfer->getItems()->count(), 'Shared company user with read only permission can not add item to shopping list.');
     }
 
-    /**
-     * @return void
-     */
     public function testAddItemsOwnerCanAddItemsToShoppingList(): void
     {
         // Arrange
@@ -677,9 +620,6 @@ class ShoppingListItemTest extends Unit
         $this->assertCount(2, $shoppingListItemCollectionTransfer->getItems());
     }
 
-    /**
-     * @return void
-     */
     public function testAddItemsOwnerCanNotAddIncorrectProductsToShoppingList(): void
     {
         // Arrange
@@ -714,9 +654,6 @@ class ShoppingListItemTest extends Unit
         $this->assertCount(0, $shoppingListItemCollectionTransfer->getItems());
     }
 
-    /**
-     * @return void
-     */
     public function testAddItemsCustomerWithoutAccessCanNotAddItemsToShoppingList(): void
     {
         // Arrange
@@ -752,9 +689,6 @@ class ShoppingListItemTest extends Unit
         $this->assertCount(0, $shoppingListItemCollectionTransfer->getItems());
     }
 
-    /**
-     * @return void
-     */
     public function testCheckShoppingListItemProductConcreteIsActiveShouldReturnTrue(): void
     {
         // Arrange
@@ -771,9 +705,6 @@ class ShoppingListItemTest extends Unit
         $this->assertTrue($isActive);
     }
 
-    /**
-     * @return void
-     */
     public function testCheckShoppingListItemProductConcreteIsActiveShouldReturnFalse(): void
     {
         // Arrange
@@ -790,9 +721,6 @@ class ShoppingListItemTest extends Unit
         $this->assertFalse($isActive);
     }
 
-    /**
-     * @return void
-     */
     public function testCheckShoppingListItemWithValidStoreSucceeds(): void
     {
         // Arrange
@@ -832,9 +760,6 @@ class ShoppingListItemTest extends Unit
         $this->assertEmpty($shoppingListPreAddItemCheckResponseTransfer->getMessages());
     }
 
-    /**
-     * @return void
-     */
     public function testCheckShoppingListItemWithInvalidStoreFails(): void
     {
         // Arrange

@@ -41,12 +41,6 @@ class ShoppingListPermissionCustomerExpanderPlugin extends AbstractPlugin implem
         return $customerTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     * @param \Generated\Shared\Transfer\PermissionCollectionTransfer $permissionCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     protected function addPermissionsToCustomerTransfer(
         CustomerTransfer $customerTransfer,
         PermissionCollectionTransfer $permissionCollectionTransfer

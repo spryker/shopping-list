@@ -14,12 +14,6 @@ use Propel\Runtime\Collection\Collection;
 
 class ShoppingListCompanyBusinessUnitMapper implements ShoppingListCompanyBusinessUnitMapperInterface
 {
-    /**
-     * @param \Propel\Runtime\Collection\Collection $companyBusinessUnitEntityCollection
-     * @param \Generated\Shared\Transfer\ShoppingListCompanyBusinessUnitCollectionTransfer $shoppingListCompanyBusinessUnitCollection
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCompanyBusinessUnitCollectionTransfer
-     */
     public function mapCompanyBusinessUnitEntitiesToShoppingListCompanyBusinessUnitCollection(
         Collection $companyBusinessUnitEntityCollection,
         ShoppingListCompanyBusinessUnitCollectionTransfer $shoppingListCompanyBusinessUnitCollection
@@ -33,12 +27,6 @@ class ShoppingListCompanyBusinessUnitMapper implements ShoppingListCompanyBusine
         return $shoppingListCompanyBusinessUnitCollection;
     }
 
-    /**
-     * @param \Orm\Zed\ShoppingList\Persistence\SpyShoppingListCompanyBusinessUnit $shoppingListCompanyBusinessUnit
-     * @param \Generated\Shared\Transfer\ShoppingListCompanyBusinessUnitTransfer $shoppingListCompanyBusinessUnitTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCompanyBusinessUnitTransfer
-     */
     public function mapCompanyBusinessUnitEntityToCompanyBusinessUnitTransfer(
         SpyShoppingListCompanyBusinessUnit $shoppingListCompanyBusinessUnit,
         ShoppingListCompanyBusinessUnitTransfer $shoppingListCompanyBusinessUnitTransfer
@@ -50,12 +38,6 @@ class ShoppingListCompanyBusinessUnitMapper implements ShoppingListCompanyBusine
             ->setIdShoppingListPermissionGroup($shoppingListCompanyBusinessUnit->getFkShoppingListPermissionGroup());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCompanyBusinessUnitTransfer $shoppingListCompanyBusinessUnitTransfer
-     * @param \Orm\Zed\ShoppingList\Persistence\SpyShoppingListCompanyBusinessUnit $shoppingListCompanyBusinessUnitEntity
-     *
-     * @return \Orm\Zed\ShoppingList\Persistence\SpyShoppingListCompanyBusinessUnit
-     */
     public function mapCompanyBusinessUnitTransferToCompanyBusinessUnitEntity(
         ShoppingListCompanyBusinessUnitTransfer $shoppingListCompanyBusinessUnitTransfer,
         SpyShoppingListCompanyBusinessUnit $shoppingListCompanyBusinessUnitEntity

@@ -41,11 +41,6 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
      */
     protected const UUID_FIELD_NAME = 'uuid';
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer|null
-     */
     public function findCustomerShoppingListByName(ShoppingListTransfer $shoppingListTransfer): ?ShoppingListTransfer
     {
         $shoppingListQuery = $this->createCustomerShoppingListQuery($shoppingListTransfer->getCustomerReference())
@@ -62,11 +57,6 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
         return null;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer|null
-     */
     public function findCustomerShoppingListById(ShoppingListTransfer $shoppingListTransfer): ?ShoppingListTransfer
     {
         $shoppingListQuery = $this->createCustomerShoppingListQuery($shoppingListTransfer->getCustomerReference())
@@ -110,11 +100,6 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
         return null;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer|null
-     */
     public function findShoppingListByUuid(ShoppingListTransfer $shoppingListTransfer): ?ShoppingListTransfer
     {
         $shoppingListQuery = $this->getFactory()->createShoppingListQuery()
@@ -135,11 +120,6 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
         return null;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListOverviewRequestTransfer $shoppingListOverviewRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListOverviewResponseTransfer
-     */
     public function findShoppingListPaginatedItems(
         ShoppingListOverviewRequestTransfer $shoppingListOverviewRequestTransfer
     ): ShoppingListOverviewResponseTransfer {
@@ -161,11 +141,6 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
             );
     }
 
-    /**
-     * @param string $customerReference
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCollectionTransfer
-     */
     public function findCustomerShoppingLists(string $customerReference): ShoppingListCollectionTransfer
     {
         $shoppingListsQuery = $this->createCustomerShoppingListWithoutItemsQuery($customerReference);
@@ -195,11 +170,6 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
             ->mapItemCollectionTransfer($shoppingListsItemEntityTransferCollection);
     }
 
-    /**
-     * @param int $idShoppingList
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemCollectionTransfer
-     */
     public function findShoppingListItemsByIdShoppingList(int $idShoppingList): ShoppingListItemCollectionTransfer
     {
         $shoppingListsItemQuery = $this->getFactory()
@@ -213,11 +183,6 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
             ->mapItemCollectionTransfer($shoppingListsItemEntityTransferCollection);
     }
 
-    /**
-     * @param array $shoppingListItemIds
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemCollectionTransfer
-     */
     public function findShoppingListItemsByIds(array $shoppingListItemIds): ShoppingListItemCollectionTransfer
     {
         $shoppingListsItemQuery = $this->getFactory()
@@ -249,9 +214,6 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
             );
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ShoppingListPermissionGroupCollectionTransfer
-     */
     public function getShoppingListPermissionGroups(): ShoppingListPermissionGroupCollectionTransfer
     {
         $shoppingListPermissionGroupQuery = $this->getFactory()->createShoppingListPermissionGroupQuery();
@@ -262,11 +224,6 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
             ->mapShoppingListPermissionGroupEntitiesToShoppingListPermissionTransfers($permissionGroupEntityTransferCollection, new ShoppingListPermissionGroupCollectionTransfer());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCriteriaTransfer $shoppingListCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCollectionTransfer
-     */
     public function getShoppingListCollection(ShoppingListCriteriaTransfer $shoppingListCriteriaTransfer): ShoppingListCollectionTransfer
     {
         $shoppingListQuery = $this->getFactory()
@@ -289,11 +246,6 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemCriteriaTransfer $shoppingListItemCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemCollectionTransfer
-     */
     public function getShoppingListItemCollection(ShoppingListItemCriteriaTransfer $shoppingListItemCriteriaTransfer): ShoppingListItemCollectionTransfer
     {
         $shoppingListItemQuery = $this->getFactory()->createShoppingListItemQuery();
@@ -306,12 +258,6 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
         );
     }
 
-    /**
-     * @param int $idShoppingList
-     * @param int $idCompanyBusinessUnit
-     *
-     * @return bool
-     */
     public function isShoppingListSharedWithCompanyBusinessUnit(int $idShoppingList, int $idCompanyBusinessUnit): bool
     {
         $shoppingListCompanyBusinessUnitEntityQuery = $this->getFactory()
@@ -322,12 +268,6 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
         return $this->buildQueryFromCriteria($shoppingListCompanyBusinessUnitEntityQuery)->exists();
     }
 
-    /**
-     * @param int $idShoppingList
-     * @param int $idCompanyUser
-     *
-     * @return bool
-     */
     public function isShoppingListSharedWithCompanyUser(int $idShoppingList, int $idCompanyUser): bool
     {
         $shoppingListCompanyUserEntityQuery = $this->getFactory()
@@ -418,11 +358,6 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
         return $companyUserSharedShoppingListIds->toArray();
     }
 
-    /**
-     * @param int $idCompanyUser
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCollectionTransfer
-     */
     public function findCompanyUserSharedShoppingLists(int $idCompanyUser): ShoppingListCollectionTransfer
     {
         $shoppingListsQuery = $this->getFactory()
@@ -472,11 +407,6 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
             ->mapCollectionTransfer($shoppingListsEntityTransferCollection);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCompanyBusinessUnitCollectionTransfer
-     */
     public function getShoppingListCompanyBusinessUnitsByShoppingListId(
         ShoppingListTransfer $shoppingListTransfer
     ): ShoppingListCompanyBusinessUnitCollectionTransfer {
@@ -527,12 +457,6 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
         return $shoppingListCompanyUserCollection;
     }
 
-    /**
-     * @param \Orm\Zed\ShoppingList\Persistence\SpyShoppingListQuery $shoppingListQuery
-     * @param \Generated\Shared\Transfer\ShoppingListCriteriaTransfer $shoppingListCriteriaTransfer
-     *
-     * @return \Orm\Zed\ShoppingList\Persistence\SpyShoppingListQuery
-     */
     protected function applyShoppingListFilters(
         SpyShoppingListQuery $shoppingListQuery,
         ShoppingListCriteriaTransfer $shoppingListCriteriaTransfer
@@ -573,12 +497,6 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
         return $shoppingListQuery;
     }
 
-    /**
-     * @param \Orm\Zed\ShoppingList\Persistence\Base\SpyShoppingListItemQuery $shoppingListItemQuery
-     * @param \Generated\Shared\Transfer\ShoppingListItemCriteriaTransfer $shoppingListItemCriteriaTransfer
-     *
-     * @return \Orm\Zed\ShoppingList\Persistence\Base\SpyShoppingListItemQuery
-     */
     protected function applyShoppingListItemFilters(
         SpyShoppingListItemQuery $shoppingListItemQuery,
         ShoppingListItemCriteriaTransfer $shoppingListItemCriteriaTransfer
@@ -615,11 +533,6 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
             ->leftJoinWithSpyShoppingListItem();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCompanyUserTransfer $shoppingListCompanyUserTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCompanyUserTransfer|null
-     */
     public function findShoppingListCompanyUser(ShoppingListCompanyUserTransfer $shoppingListCompanyUserTransfer): ?ShoppingListCompanyUserTransfer
     {
         $shoppingListsCompanyUserEntity = $this->getFactory()
@@ -637,11 +550,6 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
             ->mapCompanyUserEntityToCompanyUserTransfer($shoppingListsCompanyUserEntity, $shoppingListCompanyUserTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCompanyBusinessUnitBlacklistTransfer $shoppingListCompanyBusinessUnitBlacklistTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCompanyBusinessUnitBlacklistTransfer|null
-     */
     public function findShoppingListCompanyBusinessUnitBlackList(
         ShoppingListCompanyBusinessUnitBlacklistTransfer $shoppingListCompanyBusinessUnitBlacklistTransfer
     ): ?ShoppingListCompanyBusinessUnitBlacklistTransfer {
@@ -685,11 +593,6 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
         return $shoppingListIds;
     }
 
-    /**
-     * @param int $idCompanyBusinessUnit
-     *
-     * @return bool
-     */
     public function isCompanyBusinessUnitSharedWithShoppingLists(int $idCompanyBusinessUnit): bool
     {
         return $this->getFactory()
@@ -735,11 +638,6 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
             ->orderByIdShoppingList();
     }
 
-    /**
-     * @param \Orm\Zed\ShoppingList\Persistence\SpyShoppingListQuery $shoppingListQuery
-     *
-     * @return bool
-     */
     protected function isGroupingByUuidFieldSupported(SpyShoppingListQuery $shoppingListQuery): bool
     {
         return $shoppingListQuery->getTableMap()->hasColumn(static::UUID_FIELD_NAME);

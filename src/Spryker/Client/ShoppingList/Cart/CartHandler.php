@@ -72,11 +72,6 @@ class CartHandler implements CartHandlerInterface
         $this->quoteItemToItemMapperPlugins = $quoteItemToItemMapperPlugins;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListAddToCartRequestCollectionTransfer $shoppingListAddToCartRequestCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListAddToCartRequestCollectionTransfer
-     */
     public function addItemCollectionToCart(
         ShoppingListAddToCartRequestCollectionTransfer $shoppingListAddToCartRequestCollectionTransfer
     ): ShoppingListAddToCartRequestCollectionTransfer {
@@ -99,12 +94,6 @@ class CartHandler implements CartHandlerInterface
         return $failedToMoveRequestCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListAddToCartRequestCollectionTransfer $shoppingListAddToCartRequestCollectionTransfer
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListAddToCartRequestCollectionTransfer
-     */
     protected function getShoppingListRequestCollectionToCartDiff(
         ShoppingListAddToCartRequestCollectionTransfer $shoppingListAddToCartRequestCollectionTransfer,
         QuoteTransfer $quoteTransfer
@@ -124,11 +113,6 @@ class CartHandler implements CartHandlerInterface
         return $shoppingListRequestCollectionDiff;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListAddToCartRequestTransfer $shoppingListAddToCartRequestTransfer
-     *
-     * @return void
-     */
     protected function assertRequestTransfer(ShoppingListAddToCartRequestTransfer $shoppingListAddToCartRequestTransfer): void
     {
         $shoppingListAddToCartRequestTransfer->requireSku();
@@ -136,11 +120,6 @@ class CartHandler implements CartHandlerInterface
         $shoppingListAddToCartRequestTransfer->requireShoppingListItem();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListAddToCartRequestTransfer $shoppingListAddToCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ItemTransfer
-     */
     protected function createItemTransfer(ShoppingListAddToCartRequestTransfer $shoppingListAddToCartRequestTransfer): ItemTransfer
     {
         $itemTransfer = (new ItemTransfer())
@@ -152,12 +131,6 @@ class CartHandler implements CartHandlerInterface
         return $itemTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ItemTransfer
-     */
     protected function mapShoppingListItemToItem(ShoppingListItemTransfer $shoppingListItemTransfer, ItemTransfer $itemTransfer): ItemTransfer
     {
         foreach ($this->shoppingListItemToItemMapperPlugins as $shoppingListItemToItemMapperPlugin) {
@@ -167,12 +140,6 @@ class CartHandler implements CartHandlerInterface
         return $itemTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer|null $quoteItemTransfer
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ItemTransfer
-     */
     protected function mapQuoteItemToItem(?ItemTransfer $quoteItemTransfer, ItemTransfer $itemTransfer): ItemTransfer
     {
         if (!$quoteItemTransfer) {
@@ -186,11 +153,6 @@ class CartHandler implements CartHandlerInterface
         return $itemTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ItemTransfer|null
-     */
     protected function findItemInQuote(ItemTransfer $itemTransfer): ?ItemTransfer
     {
         $quoteTransfer = $this->cartClient->getQuote();
@@ -198,11 +160,6 @@ class CartHandler implements CartHandlerInterface
         return $this->cartClient->findQuoteItem($quoteTransfer, $itemTransfer->getSku());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return array
-     */
     protected function createExistingSkuIndex(QuoteTransfer $quoteTransfer): array
     {
         $skuIndex = [];
@@ -217,9 +174,6 @@ class CartHandler implements CartHandlerInterface
         return $skuIndex;
     }
 
-    /**
-     * @return void
-     */
     protected function addErrorMessages(): void
     {
         foreach ($this->shoppingListStub->getResponsesErrorMessages() as $messageTransfer) {

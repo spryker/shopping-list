@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\ShoppingListOverviewResponseTransfer;
 
 interface ProductStorageInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListOverviewResponseTransfer $shoppingListResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListOverviewResponseTransfer
-     */
     public function expandProductDetails(ShoppingListOverviewResponseTransfer $shoppingListResponseTransfer): ShoppingListOverviewResponseTransfer;
 }

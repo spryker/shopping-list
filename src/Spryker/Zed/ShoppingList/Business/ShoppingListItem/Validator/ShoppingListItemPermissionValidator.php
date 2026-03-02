@@ -20,12 +20,6 @@ class ShoppingListItemPermissionValidator implements ShoppingListItemPermissionV
      */
     protected const ERROR_SHOPPING_LIST_WRITE_PERMISSION_REQUIRED = 'customer.account.shopping_list.error.write_permission_required';
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     public function validatePermissionForPerformingOperation(
         ShoppingListTransfer $shoppingListTransfer,
         ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
@@ -39,11 +33,6 @@ class ShoppingListItemPermissionValidator implements ShoppingListItemPermissionV
             ->setIsSuccess(false);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return bool
-     */
     public function checkWritePermission(ShoppingListTransfer $shoppingListTransfer): bool
     {
         if (!$shoppingListTransfer->getIdShoppingList()) {

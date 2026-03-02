@@ -77,11 +77,6 @@ class QuoteToShoppingListConverter implements QuoteToShoppingListConverterInterf
         $this->itemToShoppingListItemMapperPlugins = $itemToShoppingListItemMapperPlugins;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListFromCartRequestTransfer $shoppingListFromCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     public function createShoppingListFromQuote(ShoppingListFromCartRequestTransfer $shoppingListFromCartRequestTransfer): ShoppingListTransfer
     {
         $shoppingListFromCartRequestTransfer->requireIdQuote()->requireCustomer();
@@ -91,11 +86,6 @@ class QuoteToShoppingListConverter implements QuoteToShoppingListConverterInterf
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListFromCartRequestTransfer $shoppingListFromCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     protected function executeCreateShoppingListFromQuoteTransaction(
         ShoppingListFromCartRequestTransfer $shoppingListFromCartRequestTransfer
     ): ShoppingListTransfer {
@@ -122,11 +112,6 @@ class QuoteToShoppingListConverter implements QuoteToShoppingListConverterInterf
         return $shoppingListTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListFromCartRequestTransfer $shoppingListFromCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer|null
-     */
     protected function findShoppingListByShoppingListId(
         ShoppingListFromCartRequestTransfer $shoppingListFromCartRequestTransfer
     ): ?ShoppingListTransfer {
@@ -143,11 +128,6 @@ class QuoteToShoppingListConverter implements QuoteToShoppingListConverterInterf
         return $shoppingListTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\ItemCollectionTransfer
-     */
     protected function getQuoteItems(QuoteTransfer $quoteTransfer): ItemCollectionTransfer
     {
         $itemTransferCollection = (new ItemCollectionTransfer())
@@ -160,12 +140,6 @@ class QuoteToShoppingListConverter implements QuoteToShoppingListConverterInterf
         return $itemTransferCollection;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemCollectionTransfer $itemCollectionTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return void
-     */
     protected function createShoppingListItems(
         ItemCollectionTransfer $itemCollectionTransfer,
         ShoppingListTransfer $shoppingListTransfer
@@ -185,11 +159,6 @@ class QuoteToShoppingListConverter implements QuoteToShoppingListConverterInterf
         $this->shoppingListItemOperation->saveShoppingListItemBulk($shoppingListItemCollectionTransfer, $shoppingListTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return bool
-     */
     protected function checkWritePermission(ShoppingListTransfer $shoppingListTransfer): bool
     {
         if (!$shoppingListTransfer->getIdShoppingList()) {

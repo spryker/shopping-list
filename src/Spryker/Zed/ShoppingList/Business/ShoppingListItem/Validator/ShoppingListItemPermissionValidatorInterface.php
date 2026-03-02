@@ -12,21 +12,10 @@ use Generated\Shared\Transfer\ShoppingListTransfer;
 
 interface ShoppingListItemPermissionValidatorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     public function validatePermissionForPerformingOperation(
         ShoppingListTransfer $shoppingListTransfer,
         ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
     ): ShoppingListItemResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return bool
-     */
     public function checkWritePermission(ShoppingListTransfer $shoppingListTransfer): bool;
 }

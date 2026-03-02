@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\ShoppingListItemTransfer;
 
 interface ShoppingListItemRemoverInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     public function remove(ShoppingListItemTransfer $shoppingListItemTransfer): ShoppingListItemResponseTransfer;
 }

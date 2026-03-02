@@ -13,18 +13,8 @@ use Generated\Shared\Transfer\ShoppingListTransfer;
 
 interface ShoppingListCreatorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListResponseTransfer
-     */
     public function create(ShoppingListTransfer $shoppingListTransfer): ShoppingListResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListFromCartRequestTransfer $shoppingListFromCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     public function createFromQuote(
         ShoppingListFromCartRequestTransfer $shoppingListFromCartRequestTransfer
     ): ShoppingListTransfer;

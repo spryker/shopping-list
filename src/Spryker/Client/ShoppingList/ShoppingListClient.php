@@ -393,17 +393,11 @@ class ShoppingListClient extends AbstractClient implements ShoppingListClientInt
         return $shoppingListShareResponseTransfer;
     }
 
-    /**
-     * @return \Spryker\Client\ShoppingList\Zed\ShoppingListStubInterface
-     */
     protected function getZedStub(): ShoppingListStubInterface
     {
         return $this->getFactory()->createShoppingListStub();
     }
 
-    /**
-     * @return void
-     */
     protected function updatePermissions(): void
     {
         $this->getFactory()->createPermissionUpdater()->updateCompanyUserPermissions();

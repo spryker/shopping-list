@@ -57,9 +57,6 @@ class ShoppingListConfig extends AbstractBundleConfig
         return true;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ShoppingListPermissionGroupTransfer
-     */
     protected function getReadOnlyPermissionGroup(): ShoppingListPermissionGroupTransfer
     {
         $readOnlyShoppingListPermissionGroupTransfer = new ShoppingListPermissionGroupTransfer();
@@ -70,9 +67,6 @@ class ShoppingListConfig extends AbstractBundleConfig
         return $readOnlyShoppingListPermissionGroupTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ShoppingListPermissionGroupTransfer
-     */
     protected function getFullAccessPermissionGroup(): ShoppingListPermissionGroupTransfer
     {
         $fullAccessQuotePermissionGroupTransfer = new ShoppingListPermissionGroupTransfer();

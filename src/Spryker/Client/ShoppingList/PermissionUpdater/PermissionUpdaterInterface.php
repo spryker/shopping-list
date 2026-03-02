@@ -9,8 +9,5 @@ namespace Spryker\Client\ShoppingList\PermissionUpdater;
 
 interface PermissionUpdaterInterface
 {
-    /**
-     * @return void
-     */
     public function updateCompanyUserPermissions(): void;
 }

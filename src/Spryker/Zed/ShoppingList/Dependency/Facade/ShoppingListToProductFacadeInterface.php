@@ -26,24 +26,9 @@ interface ShoppingListToProductFacadeInterface
      */
     public function findProductConcretesBySkus(array $skus): array;
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
-     *
-     * @return bool
-     */
     public function isProductConcreteActive(ProductConcreteTransfer $productConcreteTransfer): bool;
 
-    /**
-     * @param string $concreteSku
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     public function getProductConcrete(string $concreteSku): ProductConcreteTransfer;
 
-    /**
-     * @param int $idProductAbstract
-     *
-     * @return \Generated\Shared\Transfer\ProductAbstractTransfer|null
-     */
     public function findProductAbstractById(int $idProductAbstract): ?ProductAbstractTransfer;
 }

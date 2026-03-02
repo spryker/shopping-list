@@ -25,55 +25,20 @@ use Generated\Shared\Transfer\ShoppingListTransfer;
  */
 interface ShoppingListRepositoryInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer|null
-     */
     public function findCustomerShoppingListByName(ShoppingListTransfer $shoppingListTransfer): ?ShoppingListTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer|null
-     */
     public function findCustomerShoppingListById(ShoppingListTransfer $shoppingListTransfer): ?ShoppingListTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListOverviewRequestTransfer $shoppingListOverviewRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListOverviewResponseTransfer
-     */
     public function findShoppingListPaginatedItems(
         ShoppingListOverviewRequestTransfer $shoppingListOverviewRequestTransfer
     ): ShoppingListOverviewResponseTransfer;
 
-    /**
-     * @param string $customerReference
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCollectionTransfer
-     */
     public function findCustomerShoppingLists(string $customerReference): ShoppingListCollectionTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer|null
-     */
     public function findShoppingListById(ShoppingListTransfer $shoppingListTransfer): ?ShoppingListTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer|null
-     */
     public function findShoppingListByUuid(ShoppingListTransfer $shoppingListTransfer): ?ShoppingListTransfer;
 
-    /**
-     * @param int $idShoppingList
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemCollectionTransfer
-     */
     public function findShoppingListItemsByIdShoppingList(int $idShoppingList): ShoppingListItemCollectionTransfer;
 
     /**
@@ -97,39 +62,14 @@ interface ShoppingListRepositoryInterface
      */
     public function getShoppingListItemsByUuids(array $shoppingListItemUuids): ShoppingListItemCollectionTransfer;
 
-    /**
-     * @return \Generated\Shared\Transfer\ShoppingListPermissionGroupCollectionTransfer
-     */
     public function getShoppingListPermissionGroups(): ShoppingListPermissionGroupCollectionTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCriteriaTransfer $shoppingListCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCollectionTransfer
-     */
     public function getShoppingListCollection(ShoppingListCriteriaTransfer $shoppingListCriteriaTransfer): ShoppingListCollectionTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemCriteriaTransfer $shoppingListItemCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemCollectionTransfer
-     */
     public function getShoppingListItemCollection(ShoppingListItemCriteriaTransfer $shoppingListItemCriteriaTransfer): ShoppingListItemCollectionTransfer;
 
-    /**
-     * @param int $idShoppingList
-     * @param int $idCompanyBusinessUnit
-     *
-     * @return bool
-     */
     public function isShoppingListSharedWithCompanyBusinessUnit(int $idShoppingList, int $idCompanyBusinessUnit): bool;
 
-    /**
-     * @param int $idShoppingList
-     * @param int $idCompanyUser
-     *
-     * @return bool
-     */
     public function isShoppingListSharedWithCompanyUser(int $idShoppingList, int $idCompanyUser): bool;
 
     /**
@@ -165,55 +105,20 @@ interface ShoppingListRepositoryInterface
      */
     public function getCompanyUserSharedShoppingListIdsByPermissionGroupName(int $idCompanyUser, string $shoppingListPermissionGroupName): array;
 
-    /**
-     * @param int $idCompanyUser
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCollectionTransfer
-     */
     public function findCompanyUserSharedShoppingLists(int $idCompanyUser): ShoppingListCollectionTransfer;
 
-    /**
-     * @param int $idCompanyBusinessUnit
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCollectionTransfer
-     */
     public function findCompanyBusinessUnitSharedShoppingLists(int $idCompanyBusinessUnit): ShoppingListCollectionTransfer;
 
-    /**
-     * @param int $idCompanyBusinessUnit
-     *
-     * @return bool
-     */
     public function isCompanyBusinessUnitSharedWithShoppingLists(int $idCompanyBusinessUnit): bool;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCompanyBusinessUnitCollectionTransfer
-     */
     public function getShoppingListCompanyBusinessUnitsByShoppingListId(
         ShoppingListTransfer $shoppingListTransfer
     ): ShoppingListCompanyBusinessUnitCollectionTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCompanyUserCollectionTransfer
-     */
     public function getShoppingListCompanyUsersByShoppingListId(ShoppingListTransfer $shoppingListTransfer): ShoppingListCompanyUserCollectionTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCompanyUserTransfer $shoppingListCompanyUserTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCompanyUserTransfer|null
-     */
     public function findShoppingListCompanyUser(ShoppingListCompanyUserTransfer $shoppingListCompanyUserTransfer): ?ShoppingListCompanyUserTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCompanyBusinessUnitBlacklistTransfer $shoppingListCompanyBusinessUnitBlacklistTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCompanyBusinessUnitBlacklistTransfer|null
-     */
     public function findShoppingListCompanyBusinessUnitBlackList(
         ShoppingListCompanyBusinessUnitBlacklistTransfer $shoppingListCompanyBusinessUnitBlacklistTransfer
     ): ?ShoppingListCompanyBusinessUnitBlacklistTransfer;

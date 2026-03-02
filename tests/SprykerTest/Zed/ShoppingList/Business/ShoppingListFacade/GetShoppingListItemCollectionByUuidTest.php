@@ -32,9 +32,6 @@ class GetShoppingListItemCollectionByUuidTest extends Unit
      */
     protected ShoppingListBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function testGetShoppingListItemCollectionByUuidRetrievesItemsByUuid(): void
     {
         // Arrange
@@ -54,9 +51,6 @@ class GetShoppingListItemCollectionByUuidTest extends Unit
         $this->assertCount(2, $shoppingListItemCollectionTransfer->getItems());
     }
 
-    /**
-     * @return void
-     */
     public function testGetShoppingListItemCollectionByUuidRetrievesItemByUuid(): void
     {
         // Arrange
@@ -77,9 +71,6 @@ class GetShoppingListItemCollectionByUuidTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetShoppingListItemCollectionByUuidEnsureThatPluginStackExecuted(): void
     {
         // Arrange

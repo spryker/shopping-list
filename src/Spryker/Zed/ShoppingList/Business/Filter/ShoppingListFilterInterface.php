@@ -12,12 +12,6 @@ use Generated\Shared\Transfer\ShoppingListCriteriaTransfer;
 
 interface ShoppingListFilterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCriteriaTransfer $shoppingListCriteriaTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListCollectionTransfer $shoppingListCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCollectionTransfer
-     */
     public function filterBlacklistedShoppingListsFromShoppingListCollection(
         ShoppingListCriteriaTransfer $shoppingListCriteriaTransfer,
         ShoppingListCollectionTransfer $shoppingListCollectionTransfer

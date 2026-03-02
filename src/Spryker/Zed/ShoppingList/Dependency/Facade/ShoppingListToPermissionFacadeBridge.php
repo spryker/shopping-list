@@ -24,19 +24,11 @@ class ShoppingListToPermissionFacadeBridge implements ShoppingListToPermissionFa
         $this->permissionFacade = $permissionFacade;
     }
 
-    /**
-     * @param string $key
-     *
-     * @return \Generated\Shared\Transfer\PermissionTransfer|null
-     */
     public function findPermissionByKey(string $key): ?PermissionTransfer
     {
         return $this->permissionFacade->findPermissionByKey($key);
     }
 
-    /**
-     * @return void
-     */
     public function syncPermissionPlugins(): void
     {
         $this->permissionFacade->syncPermissionPlugins();

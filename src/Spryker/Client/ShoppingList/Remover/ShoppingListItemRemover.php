@@ -29,11 +29,6 @@ class ShoppingListItemRemover implements ShoppingListItemRemoverInterface
      */
     protected $shoppingListSessionRemover;
 
-    /**
-     * @param \Spryker\Client\ShoppingList\Zed\ShoppingListStubInterface $shoppingListStub
-     * @param \Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToZedRequestClientInterface $zedRequestClient
-     * @param \Spryker\Client\ShoppingList\Remover\ShoppingListSessionRemoverInterface $shoppingListSessionRemover
-     */
     public function __construct(
         ShoppingListStubInterface $shoppingListStub,
         ShoppingListToZedRequestClientInterface $zedRequestClient,
@@ -44,11 +39,6 @@ class ShoppingListItemRemover implements ShoppingListItemRemoverInterface
         $this->shoppingListSessionRemover = $shoppingListSessionRemover;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     public function remove(ShoppingListItemTransfer $shoppingListItemTransfer): ShoppingListItemResponseTransfer
     {
         $shoppingListItemResponseTransfer = $this->shoppingListStub->removeItemById($shoppingListItemTransfer);

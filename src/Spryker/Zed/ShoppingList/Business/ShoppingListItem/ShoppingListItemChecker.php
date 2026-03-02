@@ -31,10 +31,6 @@ class ShoppingListItemChecker implements ShoppingListItemCheckerInterface
      */
     protected $productFacade;
 
-    /**
-     * @param \Spryker\Zed\ShoppingList\Dependency\Facade\ShoppingListToStoreFacadeInterface $storeFacade
-     * @param \Spryker\Zed\ShoppingList\Dependency\Facade\ShoppingListToProductFacadeInterface $productFacade
-     */
     public function __construct(
         ShoppingListToStoreFacadeInterface $storeFacade,
         ShoppingListToProductFacadeInterface $productFacade
@@ -43,11 +39,6 @@ class ShoppingListItemChecker implements ShoppingListItemCheckerInterface
         $this->productFacade = $productFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListPreAddItemCheckResponseTransfer
-     */
     public function checkShoppingListItemProductHasValidStore(
         ShoppingListItemTransfer $shoppingListItemTransfer
     ): ShoppingListPreAddItemCheckResponseTransfer {
@@ -74,11 +65,6 @@ class ShoppingListItemChecker implements ShoppingListItemCheckerInterface
             ->addMessage((new MessageTransfer())->setValue(static::GLOSSARY_KEY_PRODUCT_STORE_INVALID));
     }
 
-    /**
-     * @param string $concreteSku
-     *
-     * @return \Generated\Shared\Transfer\ProductAbstractTransfer|null
-     */
     protected function findProductAbstractTransferByConcreteSku(string $concreteSku): ?ProductAbstractTransfer
     {
         $productConcreteTransfer = $this->productFacade->getProductConcrete($concreteSku);
@@ -87,11 +73,6 @@ class ShoppingListItemChecker implements ShoppingListItemCheckerInterface
         return $this->productFacade->findProductAbstractById($idProductAbstract);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
-     *
-     * @return bool
-     */
     protected function isProductAbstractStoreValid(ProductAbstractTransfer $productAbstractTransfer): bool
     {
         $storeTransfers = $productAbstractTransfer->getStoreRelation()->getStores();

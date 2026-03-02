@@ -45,31 +45,16 @@ class ShoppingListToProductFacadeBridge implements ShoppingListToProductFacadeIn
         return $this->productFacade->findProductConcretesBySkus($skus);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
-     *
-     * @return bool
-     */
     public function isProductConcreteActive(ProductConcreteTransfer $productConcreteTransfer): bool
     {
         return $this->productFacade->isProductConcreteActive($productConcreteTransfer);
     }
 
-    /**
-     * @param string $concreteSku
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     public function getProductConcrete(string $concreteSku): ProductConcreteTransfer
     {
         return $this->productFacade->getProductConcrete($concreteSku);
     }
 
-    /**
-     * @param int $idProductAbstract
-     *
-     * @return \Generated\Shared\Transfer\ProductAbstractTransfer|null
-     */
     public function findProductAbstractById(int $idProductAbstract): ?ProductAbstractTransfer
     {
         return $this->productFacade->findProductAbstractById($idProductAbstract);

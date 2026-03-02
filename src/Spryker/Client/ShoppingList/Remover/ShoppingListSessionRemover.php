@@ -23,17 +23,11 @@ class ShoppingListSessionRemover implements ShoppingListSessionRemoverInterface
      */
     protected $sessionClient;
 
-    /**
-     * @param \Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToSessionClientInterface $sessionClient
-     */
     public function __construct(ShoppingListToSessionClientInterface $sessionClient)
     {
         $this->sessionClient = $sessionClient;
     }
 
-    /**
-     * @return void
-     */
     public function removeShoppingListCollection(): void
     {
         $this->sessionClient->remove(static::SESSION_KEY_SHOPPING_LIST_COLLECTION);

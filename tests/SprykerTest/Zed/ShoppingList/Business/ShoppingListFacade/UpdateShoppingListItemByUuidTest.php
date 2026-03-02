@@ -33,9 +33,6 @@ class UpdateShoppingListItemByUuidTest extends Unit
      */
     protected ShoppingListBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function testUpdateShoppingListItemByUuidUpdatesItemByUuid(): void
     {
         // Arrange
@@ -57,9 +54,6 @@ class UpdateShoppingListItemByUuidTest extends Unit
         $this->assertSame(5, $shoppingListItemResponseTransfer->getShoppingListItem()->getQuantity());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateShoppingListItemByUuidUpdatesItemByUuidWithoutCompanyPermissions(): void
     {
         // Arrange
@@ -80,9 +74,6 @@ class UpdateShoppingListItemByUuidTest extends Unit
         $this->assertFalse($shoppingListItemResponseTransfer->getIsSuccess());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateShoppingListItemByUuidUpdatesItemByUuidWithoutUuidProperty(): void
     {
         // Arrange
@@ -101,9 +92,6 @@ class UpdateShoppingListItemByUuidTest extends Unit
         $this->tester->getFacade()->updateShoppingListItemByUuid($shoppingListItemToBeUpdated);
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateShoppingListItemByUuidUpdatesItemByUuidWithoutFkShoppingListProperty(): void
     {
         // Arrange
@@ -122,9 +110,6 @@ class UpdateShoppingListItemByUuidTest extends Unit
         $this->tester->getFacade()->updateShoppingListItemByUuid($shoppingListItemToBeUpdated);
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateShoppingListItemByUuidUpdatesItemByUuidWithoutQuantityProperty(): void
     {
         // Arrange
@@ -143,9 +128,6 @@ class UpdateShoppingListItemByUuidTest extends Unit
         $this->tester->getFacade()->updateShoppingListItemByUuid($shoppingListItemToBeUpdated);
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateShoppingListItemByUuidEnsureThatPluginStackExecuted(): void
     {
         // Arrange

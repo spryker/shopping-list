@@ -31,11 +31,6 @@ class ShoppingListCollectionReader implements ShoppingListCollectionReaderInterf
      */
     protected ShoppingListFilterInterface $shoppingListFilter;
 
-    /**
-     * @param \Spryker\Zed\ShoppingList\Business\Expander\ShoppingListItemExpanderInterface $shoppingListItemExpander
-     * @param \Spryker\Zed\ShoppingList\Persistence\ShoppingListRepositoryInterface $shoppingListRepository
-     * @param \Spryker\Zed\ShoppingList\Business\Filter\ShoppingListFilterInterface $shoppingListFilter
-     */
     public function __construct(
         ShoppingListItemExpanderInterface $shoppingListItemExpander,
         ShoppingListRepositoryInterface $shoppingListRepository,
@@ -46,11 +41,6 @@ class ShoppingListCollectionReader implements ShoppingListCollectionReaderInterf
         $this->shoppingListFilter = $shoppingListFilter;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCriteriaTransfer $shoppingListCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCollectionTransfer
-     */
     public function getShoppingListCollection(ShoppingListCriteriaTransfer $shoppingListCriteriaTransfer): ShoppingListCollectionTransfer
     {
         $customerShoppingListCriteriaTransfer = (new ShoppingListCriteriaTransfer())->fromArray($shoppingListCriteriaTransfer->toArray());
@@ -92,12 +82,6 @@ class ShoppingListCollectionReader implements ShoppingListCollectionReaderInterf
         return $shoppingListCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListConditionsTransfer $shoppingListConditionsTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListCollectionTransfer $shoppingListCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCollectionTransfer
-     */
     protected function addSharedShoppingListsToShoppingListCollection(
         ShoppingListConditionsTransfer $shoppingListConditionsTransfer,
         ShoppingListCollectionTransfer $shoppingListCollectionTransfer
@@ -130,11 +114,6 @@ class ShoppingListCollectionReader implements ShoppingListCollectionReaderInterf
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCollectionTransfer ...$shoppingListTransferCollections
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCollectionTransfer
-     */
     protected function mergeShoppingListCollections(ShoppingListCollectionTransfer ...$shoppingListTransferCollections): ShoppingListCollectionTransfer
     {
         $mergedShoppingListCollection = new ShoppingListCollectionTransfer();

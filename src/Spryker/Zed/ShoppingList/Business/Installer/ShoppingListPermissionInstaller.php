@@ -33,11 +33,6 @@ class ShoppingListPermissionInstaller implements ShoppingListPermissionInstaller
      */
     protected $permissionFacade;
 
-    /**
-     * @param \Spryker\Zed\ShoppingList\ShoppingListConfig $shoppingListConfig
-     * @param \Spryker\Zed\ShoppingList\Persistence\ShoppingListEntityManagerInterface $shoppingListEntityManager
-     * @param \Spryker\Zed\ShoppingList\Dependency\Facade\ShoppingListToPermissionFacadeInterface $permissionFacade
-     */
     public function __construct(
         ShoppingListConfig $shoppingListConfig,
         ShoppingListEntityManagerInterface $shoppingListEntityManager,
@@ -48,9 +43,6 @@ class ShoppingListPermissionInstaller implements ShoppingListPermissionInstaller
         $this->permissionFacade = $permissionFacade;
     }
 
-    /**
-     * @return void
-     */
     public function install(): void
     {
         $this->getTransactionHandler()->handleTransaction(function () {
@@ -58,9 +50,6 @@ class ShoppingListPermissionInstaller implements ShoppingListPermissionInstaller
         });
     }
 
-    /**
-     * @return void
-     */
     protected function executeInstallTransaction(): void
     {
         $this->permissionFacade->syncPermissionPlugins();
@@ -80,11 +69,6 @@ class ShoppingListPermissionInstaller implements ShoppingListPermissionInstaller
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListPermissionGroupTransfer $shoppingListPermissionGroupTransfer
-     *
-     * @return \Generated\Shared\Transfer\SpyShoppingListPermissionGroupEntityTransfer
-     */
     protected function createShoppingListPermissionGroupEntityTransfer(
         ShoppingListPermissionGroupTransfer $shoppingListPermissionGroupTransfer
     ): SpyShoppingListPermissionGroupEntityTransfer {

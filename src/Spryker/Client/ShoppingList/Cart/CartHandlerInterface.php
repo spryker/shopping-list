@@ -11,11 +11,6 @@ use Generated\Shared\Transfer\ShoppingListAddToCartRequestCollectionTransfer;
 
 interface CartHandlerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListAddToCartRequestCollectionTransfer $shoppingListAddToCartRequestCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListAddToCartRequestCollectionTransfer
-     */
     public function addItemCollectionToCart(
         ShoppingListAddToCartRequestCollectionTransfer $shoppingListAddToCartRequestCollectionTransfer
     ): ShoppingListAddToCartRequestCollectionTransfer;

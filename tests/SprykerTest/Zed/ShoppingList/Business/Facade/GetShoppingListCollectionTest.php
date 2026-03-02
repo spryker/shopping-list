@@ -37,9 +37,6 @@ class GetShoppingListCollectionTest extends Unit
      */
     protected ShoppingListBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function testShouldReturnEmptyCollection(): void
     {
         // Arrange
@@ -57,9 +54,6 @@ class GetShoppingListCollectionTest extends Unit
         $this->assertCount(0, $shoppingListCollectionTransfer->getShoppingLists());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnCollectionByCustomerReferences(): void
     {
         // Arrange
@@ -85,9 +79,6 @@ class GetShoppingListCollectionTest extends Unit
         $this->assertSame($foundShoppingListTransfer->getCustomerReferenceOrFail(), $companyUserTransfer->getCustomerOrFail()->getCustomerReferenceOrFail());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnCollectionByCompanyUserIds(): void
     {
         // Arrange
@@ -123,9 +114,6 @@ class GetShoppingListCollectionTest extends Unit
         $this->assertNotSame($foundShoppingListTransfer->getCustomerReferenceOrFail(), $secondCompanyUserTransfer->getCustomerOrFail()->getCustomerReferenceOrFail());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnCollectionByCompanyBusinessUnitIds(): void
     {
         // Arrange
@@ -161,9 +149,6 @@ class GetShoppingListCollectionTest extends Unit
         $this->assertNotSame($foundShoppingListTransfer->getCustomerReferenceOrFail(), $secondCompanyUserTransfer->getCustomerOrFail()->getCustomerReferenceOrFail());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnCollectionWithoutBlacklistedShoppingLists(): void
     {
         // Arrange
@@ -201,9 +186,6 @@ class GetShoppingListCollectionTest extends Unit
         $this->assertSame($foundShoppingListTransfer->getCustomerReferenceOrFail(), $companyUserTransfer->getCustomerOrFail()->getCustomerReferenceOrFail());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnCollectionWithBlacklistedShoppingLists(): void
     {
         // Arrange
@@ -236,9 +218,6 @@ class GetShoppingListCollectionTest extends Unit
         $this->assertCount(2, $shoppingListCollectionTransfer->getShoppingLists());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnCollectionWithShoppingListItems(): void
     {
         // Arrange
@@ -269,9 +248,6 @@ class GetShoppingListCollectionTest extends Unit
         $this->assertCount(1, $foundShoppingListTransfer->getItems());
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnCollectionWithoutShoppingListItems(): void
     {
         // Arrange
@@ -302,9 +278,6 @@ class GetShoppingListCollectionTest extends Unit
         $this->assertCount(0, $foundShoppingListTransfer->getItems());
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CompanyUserTransfer
-     */
     protected function getCustomerUser(): CompanyUserTransfer
     {
         $companyTransfer = $this->tester->createCompany();

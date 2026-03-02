@@ -16,9 +16,6 @@ class ReadShoppingListPermissionPlugin extends AbstractPlugin implements Executa
 {
     public const KEY = ShoppingListConfig::READ_SHOPPING_LIST_PERMISSION_PLUGIN_KEY;
 
-    /**
-     * @return string
-     */
     public function getKey(): string
     {
         return static::KEY;

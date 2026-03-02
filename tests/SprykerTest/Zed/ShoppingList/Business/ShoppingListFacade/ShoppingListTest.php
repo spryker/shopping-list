@@ -98,9 +98,6 @@ class ShoppingListTest extends Unit
      */
     protected $readOnlyPermissionGroup;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -150,9 +147,6 @@ class ShoppingListTest extends Unit
         $this->tester->haveProductInStock([StockProductTransfer::SKU => $this->product->getSku()]);
     }
 
-    /**
-     * @return void
-     */
     public function testCustomerCanCreateShoppingList(): void
     {
         // Arrange
@@ -170,9 +164,6 @@ class ShoppingListTest extends Unit
         $this->assertNotEmpty($loadedShoppingListTransfer->getIdShoppingList(), 'Customer should have been able to save shopping list to database.');
     }
 
-    /**
-     * @return void
-     */
     public function testCustomersShoppingListNameShouldBeUnique(): void
     {
         // Arrange
@@ -196,9 +187,6 @@ class ShoppingListTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testCustomersCanRenameShoppingList(): void
     {
         // Arrange
@@ -216,9 +204,6 @@ class ShoppingListTest extends Unit
         $this->assertSame($loadedShoppingListTransfer->getName(), $newShoppingListName, 'Owner should have been able to rename.');
     }
 
-    /**
-     * @return void
-     */
     public function testOwnerCanRemoveShoppingList(): void
     {
         // Arrange
@@ -233,9 +218,6 @@ class ShoppingListTest extends Unit
         $this->assertTrue($shoppingListResponseTransfer->getIsSuccess(), 'Owner should have been able to remove the shopping list from database.');
     }
 
-    /**
-     * @return void
-     */
     public function testOnlyOwnerCanRemoveShoppingList(): void
     {
         // Arrange
@@ -251,9 +233,6 @@ class ShoppingListTest extends Unit
         $this->assertFalse($shoppingListResponseTransfer->getIsSuccess(), 'Only owner should have been able to remove the shopping list from database.');
     }
 
-    /**
-     * @return void
-     */
     public function testCustomerCanShareShoppingListWithCompanyUser(): void
     {
         // Arrange
@@ -282,9 +261,6 @@ class ShoppingListTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testCustomerCanShareShoppingListWithBusinessUnit(): void
     {
         // Arrange
@@ -313,9 +289,6 @@ class ShoppingListTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testCustomerCanShareShoppingList(): void
     {
         // Arrange
@@ -344,9 +317,6 @@ class ShoppingListTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testCustomerCanNotRemoveSharedShoppingList(): void
     {
         // Arrange
@@ -370,9 +340,6 @@ class ShoppingListTest extends Unit
         $this->assertFalse($shoppingListResponseTransfer->getIsSuccess(), 'Shared shopping list cannot be removed by customer.');
     }
 
-    /**
-     * @return void
-     */
     public function testCustomerCanCreateShoppingListFromHisQuote(): void
     {
         // Arrange
@@ -396,9 +363,6 @@ class ShoppingListTest extends Unit
         $this->assertNotNull($shoppingListItemResponseTransfer->getIdShoppingList(), 'Customer should be able to create shopping list from his quote.');
     }
 
-    /**
-     * @return void
-     */
     public function testOnlyConcreteProductCanBeAddedToShoppingList(): void
     {
         // Arrange
@@ -421,9 +385,6 @@ class ShoppingListTest extends Unit
         $this->assertNull($resultShoppingListItemResponseTransfer->getShoppingListItem(), 'Abstract product should not be able to be added to shopping list.');
     }
 
-    /**
-     * @return void
-     */
     public function testShouldReturnShoppingListPermissionGroupCollection(): void
     {
         // Arrange
@@ -452,9 +413,6 @@ class ShoppingListTest extends Unit
         $this->assertContains(static::FAKE_PERMISSION_FULL_ACCESS, $shoppingListPermissionGroupNames);
     }
 
-    /**
-     * @return void
-     */
     public function testDismissShoppingListSharingCompanyUserCanDismissSharingShoppingListWithCompanyUser(): void
     {
         // Arrange
@@ -484,9 +442,6 @@ class ShoppingListTest extends Unit
         $this->assertNull($sharedShoppingListTransfer->getIdShoppingList());
     }
 
-    /**
-     * @return void
-     */
     public function testDismissShoppingListSharingCompanyUserCanDismissSharingShoppingListWithBusinessUnit(): void
     {
         // Arrange
@@ -516,9 +471,6 @@ class ShoppingListTest extends Unit
         $this->assertNull($sharedShoppingListTransfer->getIdShoppingList());
     }
 
-    /**
-     * @return void
-     */
     public function testGetCustomerShoppingListCollection(): void
     {
         // Arrange
@@ -548,9 +500,6 @@ class ShoppingListTest extends Unit
         $this->assertSame(3, $shoppingListItemResponseTransfer->getShoppingLists()[0]->getNumberOfItems(), 'Customer should get correct count of items in the shopping list.');
     }
 
-    /**
-     * @return void
-     */
     public function testGetShoppingListOverview(): void
     {
         // Arrange

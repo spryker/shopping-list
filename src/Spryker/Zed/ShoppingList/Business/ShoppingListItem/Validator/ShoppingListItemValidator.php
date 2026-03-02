@@ -55,11 +55,6 @@ class ShoppingListItemValidator implements ShoppingListItemValidatorInterface
      */
     protected $productFacade;
 
-    /**
-     * @param \Spryker\Zed\ShoppingList\Persistence\ShoppingListRepositoryInterface $shoppingListRepository
-     * @param \Spryker\Zed\ShoppingList\Business\ShoppingListItem\Validator\ShoppingListItemPermissionValidatorInterface $permissionValidator
-     * @param \Spryker\Zed\ShoppingList\Dependency\Facade\ShoppingListToProductFacadeInterface $productFacade
-     */
     public function __construct(
         ShoppingListRepositoryInterface $shoppingListRepository,
         ShoppingListItemPermissionValidatorInterface $permissionValidator,
@@ -70,12 +65,6 @@ class ShoppingListItemValidator implements ShoppingListItemValidatorInterface
         $this->productFacade = $productFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     public function checkShoppingListItemParent(
         ShoppingListItemTransfer $shoppingListItemTransfer,
         ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
@@ -111,12 +100,6 @@ class ShoppingListItemValidator implements ShoppingListItemValidatorInterface
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     public function validateShoppingListItemQuantity(
         ShoppingListItemTransfer $shoppingListItemTransfer,
         ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
@@ -133,12 +116,6 @@ class ShoppingListItemValidator implements ShoppingListItemValidatorInterface
         return $shoppingListItemResponseTransfer->setIsSuccess(true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     public function validateShoppingListItemSku(
         ShoppingListItemTransfer $shoppingListItemTransfer,
         ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
@@ -154,12 +131,6 @@ class ShoppingListItemValidator implements ShoppingListItemValidatorInterface
         return $shoppingListItemResponseTransfer->setIsSuccess(true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return bool
-     */
     protected function checkShoppingListItem(
         ShoppingListItemTransfer $shoppingListItemTransfer,
         ShoppingListTransfer $shoppingListTransfer
@@ -173,12 +144,6 @@ class ShoppingListItemValidator implements ShoppingListItemValidatorInterface
         return false;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return bool
-     */
     protected function checkShoppingListItemByUuid(
         ShoppingListItemTransfer $shoppingListItemTransfer,
         ShoppingListTransfer $shoppingListTransfer

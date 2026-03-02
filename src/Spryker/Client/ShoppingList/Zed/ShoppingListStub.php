@@ -31,9 +31,6 @@ class ShoppingListStub implements ShoppingListStubInterface
      */
     protected $zedRequestClient;
 
-    /**
-     * @param \Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToZedRequestClientInterface $zedRequestClient
-     */
     public function __construct(ShoppingListToZedRequestClientInterface $zedRequestClient)
     {
         $this->zedRequestClient = $zedRequestClient;

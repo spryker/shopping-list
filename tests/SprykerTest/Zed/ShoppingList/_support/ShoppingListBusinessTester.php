@@ -69,9 +69,6 @@ class ShoppingListBusinessTester extends Actor
      */
     protected $companyBusinessUnit;
 
-    /**
-     * @return \Generated\Shared\Transfer\CompanyTransfer
-     */
     public function createCompany(): CompanyTransfer
     {
         return $this->haveCompany(
@@ -84,11 +81,6 @@ class ShoppingListBusinessTester extends Actor
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyBusinessUnitTransfer
-     */
     public function createCompanyBusinessUnit(CompanyTransfer $companyTransfer): CompanyBusinessUnitTransfer
     {
         return $this->haveCompanyBusinessUnit(
@@ -101,11 +93,6 @@ class ShoppingListBusinessTester extends Actor
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyUserTransfer $companyUserTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     public function createShoppingList(CompanyUserTransfer $companyUserTransfer): ShoppingListTransfer
     {
         return $this->haveShoppingList([
@@ -114,11 +101,6 @@ class ShoppingListBusinessTester extends Actor
         ]);
     }
 
-    /**
-     * @param bool $isActive
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
     public function createProductConcrete(bool $isActive): ProductConcreteTransfer
     {
         $productConcreteOverride = [
@@ -128,11 +110,6 @@ class ShoppingListBusinessTester extends Actor
         return $this->haveFullProduct($productConcreteOverride);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer|null $productConcreteTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemTransfer
-     */
     public function createShoppingListItem(?ProductConcreteTransfer $productConcreteTransfer = null): ShoppingListItemTransfer
     {
         $productConcreteTransfer = $productConcreteTransfer ?? $this->haveProduct();
@@ -163,9 +140,6 @@ class ShoppingListBusinessTester extends Actor
         ]);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CompanyUserTransfer
-     */
     public function createCompanyUserForBusinessUnit(): CompanyUserTransfer
     {
         $customerTransfer = $this->haveCustomer();
@@ -186,12 +160,6 @@ class ShoppingListBusinessTester extends Actor
         ]);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     * @param \Generated\Shared\Transfer\CompanyUserTransfer $companyUserTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCompanyUserTransfer
-     */
     public function shareShoppingListWithCompanyUser(
         ShoppingListTransfer $shoppingListTransfer,
         CompanyUserTransfer $companyUserTransfer
@@ -211,12 +179,6 @@ class ShoppingListBusinessTester extends Actor
         return (new ShoppingListCompanyUserTransfer())->fromArray($shoppingListCompanyUserEntity->toArray(), true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyUserTransfer $companyUserTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCompanyBusinessUnitBlacklistTransfer
-     */
     public function createShoppingListCompanyBusinessUnitBlacklist(
         CompanyUserTransfer $companyUserTransfer,
         ShoppingListTransfer $shoppingListTransfer
@@ -264,11 +226,6 @@ class ShoppingListBusinessTester extends Actor
         return $shoppingListCompanyBusinessUnitBlacklistTransfers;
     }
 
-    /**
-     * @param int $idCompanyUser
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCompanyUserCollectionTransfer
-     */
     public function findShoppingListCompanyUsers(int $idCompanyUser): ShoppingListCompanyUserCollectionTransfer
     {
         $shoppingListCompanyUserEntities = (new SpyShoppingListCompanyUserQuery())
@@ -288,11 +245,6 @@ class ShoppingListBusinessTester extends Actor
         return $shoppingListCompanyUserCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer|null
-     */
     public function findShoppingList(ShoppingListTransfer $shoppingListTransfer): ?ShoppingListTransfer
     {
         $shoppingListEntity = (new SpyShoppingListQuery())

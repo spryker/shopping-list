@@ -68,9 +68,6 @@ use Spryker\Zed\ShoppingList\ShoppingListDependencyProvider;
  */
 class ShoppingListBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\ShoppingList\Business\Model\ShoppingListReaderInterface
-     */
     public function createShoppingListReader(): ShoppingListReaderInterface
     {
         return new ShoppingListReader(
@@ -83,9 +80,6 @@ class ShoppingListBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Business\Reader\ShoppingListCollectionReaderInterface
-     */
     public function createShoppingListCollectionReader(): ShoppingListCollectionReaderInterface
     {
         return new ShoppingListCollectionReader(
@@ -95,9 +89,6 @@ class ShoppingListBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Business\Expander\ShoppingListItemExpanderInterface
-     */
     public function createShoppingListItemExpander(): ShoppingListItemExpanderInterface
     {
         return new ShoppingListItemExpander(
@@ -106,9 +97,6 @@ class ShoppingListBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Business\Filter\ShoppingListFilterInterface
-     */
     public function createShoppingListFilter(): ShoppingListFilterInterface
     {
         return new ShoppingListFilter(
@@ -117,17 +105,11 @@ class ShoppingListBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Business\Extractor\ShoppingListExtractorInterface
-     */
     public function createShoppingListExtractor(): ShoppingListExtractorInterface
     {
         return new ShoppingListExtractor();
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Business\Model\ShoppingListWriterInterface
-     */
     public function createShoppingListWriter(): ShoppingListWriterInterface
     {
         return new ShoppingListWriter(
@@ -140,9 +122,6 @@ class ShoppingListBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Business\Model\ShoppingListResolverInterface
-     */
     public function createShoppingListResolver(): ShoppingListResolverInterface
     {
         return new ShoppingListResolver(
@@ -153,9 +132,6 @@ class ShoppingListBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Business\Model\ShoppingListItemOperationInterface
-     */
     public function createShoppingListItemOperation(): ShoppingListItemOperationInterface
     {
         return new ShoppingListItemOperation(
@@ -167,17 +143,11 @@ class ShoppingListBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Business\Product\ProductConcreteIsActiveCheckerInterface
-     */
     public function createProductConcreteIsActiveChecker(): ProductConcreteIsActiveCheckerInterface
     {
         return new ProductConcreteIsActiveChecker($this->getProductFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Business\ShoppingListItem\ShoppingListItemPluginExecutorInterface
-     */
     public function createShoppingListItemPluginExecutor(): ShoppingListItemPluginExecutorInterface
     {
         return new ShoppingListItemPluginExecutor(
@@ -191,9 +161,6 @@ class ShoppingListBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Business\Model\QuoteToShoppingListConverterInterface
-     */
     public function createQuoteToShoppingListConverter(): QuoteToShoppingListConverterInterface
     {
         return new QuoteToShoppingListConverter(
@@ -206,9 +173,6 @@ class ShoppingListBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Business\Model\ShoppingListSharerInterface
-     */
     public function createShoppingListSharer(): ShoppingListSharerInterface
     {
         return new ShoppingListSharer(
@@ -217,9 +181,6 @@ class ShoppingListBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Business\ShoppingListItem\Validator\ShoppingListItemOperationValidatorInterface
-     */
     public function createShoppingListItemOperationValidator(): ShoppingListItemOperationValidatorInterface
     {
         return new ShoppingListItemOperationValidator(
@@ -229,9 +190,6 @@ class ShoppingListBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Business\ShoppingListItem\Validator\ShoppingListItemAddOperationValidatorInterface
-     */
     public function createShoppingListItemAddOperationValidator(): ShoppingListItemAddOperationValidatorInterface
     {
         return new ShoppingListItemAddOperationValidator(
@@ -242,25 +200,16 @@ class ShoppingListBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Business\ShoppingListItem\Validator\ShoppingListItemUpdateOperationValidatorInterface
-     */
     public function createShoppingListItemUpdateOperationValidator(): ShoppingListItemUpdateOperationValidatorInterface
     {
         return new ShoppingListItemUpdateOperationValidator($this->createShoppingListItemValidator());
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Business\ShoppingListItem\Validator\ShoppingListItemDeleteOperationValidatorInterface
-     */
     public function createShoppingListItemDeleteOperationValidator(): ShoppingListItemDeleteOperationValidatorInterface
     {
         return new ShoppingListItemDeleteOperationValidator($this->createShoppingListItemValidator());
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Business\ShoppingListItem\Validator\ShoppingListItemValidatorInterface
-     */
     public function createShoppingListItemValidator(): ShoppingListItemValidatorInterface
     {
         return new ShoppingListItemValidator(
@@ -270,17 +219,11 @@ class ShoppingListBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Business\ShoppingListItem\Validator\ShoppingListItemPermissionValidatorInterface
-     */
     public function createShoppingListItemPermissionValidator(): ShoppingListItemPermissionValidatorInterface
     {
         return new ShoppingListItemPermissionValidator();
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Business\ShoppingListItem\Messenger\ShoppingListItemMessageAdderInterface
-     */
     public function createShoppingListItemMessageAdder(): ShoppingListItemMessageAdderInterface
     {
         return new ShoppingListItemMessageAdder($this->getMessengerFacade());
@@ -302,25 +245,16 @@ class ShoppingListBusinessFactory extends AbstractBusinessFactory
         return $this->getProvidedDependency(ShoppingListDependencyProvider::PLUGINS_ITEM_COLLECTION_EXPANDER);
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Dependency\Facade\ShoppingListToProductFacadeInterface
-     */
     public function getProductFacade(): ShoppingListToProductFacadeInterface
     {
         return $this->getProvidedDependency(ShoppingListDependencyProvider::FACADE_PRODUCT);
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Business\Installer\ShoppingListPermissionInstallerInterface
-     */
     public function createShoppingListPermissionInstaller(): ShoppingListPermissionInstallerInterface
     {
         return new ShoppingListPermissionInstaller($this->getConfig(), $this->getEntityManager(), $this->getPermissionFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Business\ShoppingList\ShoppingListShareDeleterInterface
-     */
     public function createShoppingListShareDeleter(): ShoppingListShareDeleterInterface
     {
         return new ShoppingListShareDeleter(
@@ -331,41 +265,26 @@ class ShoppingListBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Dependency\Facade\ShoppingListToPermissionFacadeInterface
-     */
     public function getPermissionFacade(): ShoppingListToPermissionFacadeInterface
     {
         return $this->getProvidedDependency(ShoppingListDependencyProvider::FACADE_PERMISSION);
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Dependency\Facade\ShoppingListToCompanyUserFacadeInterface
-     */
     public function getCompanyUserFacade(): ShoppingListToCompanyUserFacadeInterface
     {
         return $this->getProvidedDependency(ShoppingListDependencyProvider::FACADE_COMPANY_USER);
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Dependency\Facade\ShoppingListToPersistentCartFacadeInterface
-     */
     public function getPersistentCartFacade(): ShoppingListToPersistentCartFacadeInterface
     {
         return $this->getProvidedDependency(ShoppingListDependencyProvider::FACADE_PERSISTENT_CART);
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Dependency\Facade\ShoppingListToMessengerFacadeInterface
-     */
     public function getMessengerFacade(): ShoppingListToMessengerFacadeInterface
     {
         return $this->getProvidedDependency(ShoppingListDependencyProvider::FACADE_MESSENGER);
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Dependency\Facade\ShoppingListToEventFacadeInterface
-     */
     public function getEventFacade(): ShoppingListToEventFacadeInterface
     {
         return $this->getProvidedDependency(ShoppingListDependencyProvider::FACADE_EVENT);
@@ -419,9 +338,6 @@ class ShoppingListBusinessFactory extends AbstractBusinessFactory
         return $this->getProvidedDependency(ShoppingListDependencyProvider::PLUGINS_ITEM_TO_SHOPPING_LIST_ITEM_MAPPER);
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Business\ShoppingListItem\ShoppingListItemCheckerInterface
-     */
     public function createShoppingListItemChecker(): ShoppingListItemCheckerInterface
     {
         return new ShoppingListItemChecker(
@@ -430,9 +346,6 @@ class ShoppingListBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Dependency\Facade\ShoppingListToStoreFacadeInterface
-     */
     public function getStoreFacade(): ShoppingListToStoreFacadeInterface
     {
         return $this->getProvidedDependency(ShoppingListDependencyProvider::FACADE_STORE);

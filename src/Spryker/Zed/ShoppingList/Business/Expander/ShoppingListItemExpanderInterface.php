@@ -11,11 +11,6 @@ use Generated\Shared\Transfer\ShoppingListCollectionTransfer;
 
 interface ShoppingListItemExpanderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCollectionTransfer $shoppingListCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCollectionTransfer
-     */
     public function expandShoppingListCollectionWithShoppingListItems(
         ShoppingListCollectionTransfer $shoppingListCollectionTransfer
     ): ShoppingListCollectionTransfer;

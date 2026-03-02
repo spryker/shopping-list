@@ -25,12 +25,6 @@ class ShoppingListToPersistentCartFacadeBridge implements ShoppingListToPersiste
         $this->persistentCartFacade = $persistentCartFacade;
     }
 
-    /**
-     * @param int $idQuote
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteResponseTransfer
-     */
     public function findQuote(int $idQuote, CustomerTransfer $customerTransfer): QuoteResponseTransfer
     {
         return $this->persistentCartFacade->findQuote($idQuote, $customerTransfer);

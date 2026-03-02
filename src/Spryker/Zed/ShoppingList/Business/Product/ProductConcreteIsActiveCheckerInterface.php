@@ -12,11 +12,6 @@ use Generated\Shared\Transfer\ShoppingListPreAddItemCheckResponseTransfer;
 
 interface ProductConcreteIsActiveCheckerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListPreAddItemCheckResponseTransfer
-     */
     public function checkShoppingListItemProductIsActive(
         ShoppingListItemTransfer $shoppingListItemTransfer
     ): ShoppingListPreAddItemCheckResponseTransfer;

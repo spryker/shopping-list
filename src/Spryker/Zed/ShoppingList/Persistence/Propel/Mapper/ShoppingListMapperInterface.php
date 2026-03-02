@@ -15,12 +15,6 @@ use Propel\Runtime\Collection\Collection;
 
 interface ShoppingListMapperInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\SpyShoppingListEntityTransfer $shoppingListEntityTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     public function mapShoppingListTransfer(
         SpyShoppingListEntityTransfer $shoppingListEntityTransfer,
         ShoppingListTransfer $shoppingListTransfer
@@ -44,12 +38,6 @@ interface ShoppingListMapperInterface
         ShoppingListCollectionTransfer $shoppingListCollectionTransfer
     ): ShoppingListCollectionTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     * @param \Orm\Zed\ShoppingList\Persistence\SpyShoppingList $shoppingListEntity
-     *
-     * @return \Orm\Zed\ShoppingList\Persistence\SpyShoppingList
-     */
     public function mapTransferToEntity(
         ShoppingListTransfer $shoppingListTransfer,
         SpyShoppingList $shoppingListEntity

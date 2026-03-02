@@ -24,11 +24,6 @@ class ShoppingListToPriceProductClientBridge implements ShoppingListToPriceProdu
         $this->priceProductClient = $priceProductClient;
     }
 
-    /**
-     * @param array $priceMap
-     *
-     * @return \Generated\Shared\Transfer\CurrentProductPriceTransfer
-     */
     public function resolveProductPrice(array $priceMap): CurrentProductPriceTransfer
     {
         return $this->priceProductClient->resolveProductPrice($priceMap);

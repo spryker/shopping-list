@@ -24,10 +24,6 @@ class ShoppingListFilter implements ShoppingListFilterInterface
      */
     protected ShoppingListExtractorInterface $shoppingListExtractor;
 
-    /**
-     * @param \Spryker\Zed\ShoppingList\Persistence\ShoppingListRepositoryInterface $shoppingListRepository
-     * @param \Spryker\Zed\ShoppingList\Business\Extractor\ShoppingListExtractorInterface $shoppingListExtractor
-     */
     public function __construct(
         ShoppingListRepositoryInterface $shoppingListRepository,
         ShoppingListExtractorInterface $shoppingListExtractor
@@ -36,12 +32,6 @@ class ShoppingListFilter implements ShoppingListFilterInterface
         $this->shoppingListExtractor = $shoppingListExtractor;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCriteriaTransfer $shoppingListCriteriaTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListCollectionTransfer $shoppingListCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCollectionTransfer
-     */
     public function filterBlacklistedShoppingListsFromShoppingListCollection(
         ShoppingListCriteriaTransfer $shoppingListCriteriaTransfer,
         ShoppingListCollectionTransfer $shoppingListCollectionTransfer

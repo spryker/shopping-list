@@ -29,11 +29,6 @@ class ShoppingListHelper extends Module
 {
     use LocatorHelperTrait;
 
-    /**
-     * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     public function haveShoppingList(array $seed = []): ShoppingListTransfer
     {
         $shoppingListTransfer = $this->buildShoppingList($seed);
@@ -41,12 +36,6 @@ class ShoppingListHelper extends Module
         return $this->getLocator()->shoppingList()->facade()->createShoppingList($shoppingListTransfer)->getShoppingList();
     }
 
-    /**
-     * @param int $idQuote
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     public function haveShoppingListFromQuote(int $idQuote, CustomerTransfer $customerTransfer): ShoppingListTransfer
     {
         $shoppingListTransfer = (new ShoppingListBuilder())->build();
@@ -58,11 +47,6 @@ class ShoppingListHelper extends Module
         return $this->getLocator()->shoppingList()->facade()->createShoppingListFromQuote($shoppingListTransfer);
     }
 
-    /**
-     * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     public function buildShoppingList(array $seed = []): ShoppingListTransfer
     {
         /** @var \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer */
@@ -71,11 +55,6 @@ class ShoppingListHelper extends Module
         return $shoppingListTransfer;
     }
 
-    /**
-     * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemTransfer
-     */
     public function buildShoppingListItem(array $seed = []): ShoppingListItemTransfer
     {
         /** @var \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer */
@@ -84,11 +63,6 @@ class ShoppingListHelper extends Module
         return $shoppingListItemTransfer;
     }
 
-    /**
-     * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemTransfer
-     */
     public function haveShoppingListItem(array $seed = []): ShoppingListItemTransfer
     {
         return $this->getLocator()->shoppingList()->facade()->addShoppingListItem(
@@ -96,12 +70,6 @@ class ShoppingListHelper extends Module
         )->getShoppingListItem();
     }
 
-    /**
-     * @param string $name
-     * @param array $permissionKeys
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListPermissionGroupTransfer
-     */
     public function haveShoppingListPermissionGroup(string $name, array $permissionKeys): ShoppingListPermissionGroupTransfer
     {
         $shoppingListPermissionGroupEntity = new SpyShoppingListPermissionGroup();
@@ -127,13 +95,6 @@ class ShoppingListHelper extends Module
         return $shoppingListPermissionGroupTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyUserTransfer $companyUserTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListPermissionGroupTransfer $shoppingListPermissionGroupTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCompanyUserTransfer
-     */
     public function haveShoppingListCompanyUser(
         CompanyUserTransfer $companyUserTransfer,
         ShoppingListTransfer $shoppingListTransfer,
@@ -149,13 +110,6 @@ class ShoppingListHelper extends Module
         return (new ShoppingListCompanyUserTransfer())->fromArray($shoppingListCompanyUserEntity->toArray(), true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyUserTransfer $companyUserTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListPermissionGroupTransfer $shoppingListPermissionGroupTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListCompanyBusinessUnitTransfer
-     */
     public function haveShoppingListCompanyBusinessUnit(
         CompanyUserTransfer $companyUserTransfer,
         ShoppingListTransfer $shoppingListTransfer,

@@ -17,17 +17,11 @@ class PermissionUpdater implements PermissionUpdaterInterface
      */
     protected $customerClient;
 
-    /**
-     * @param \Spryker\Client\ShoppingList\Dependency\Client\ShoppingListToCustomerClientInterface $customerClient
-     */
     public function __construct(ShoppingListToCustomerClientInterface $customerClient)
     {
         $this->customerClient = $customerClient;
     }
 
-    /**
-     * @return void
-     */
     public function updateCompanyUserPermissions(): void
     {
         $customerTransfer = $this->customerClient->getCustomer();

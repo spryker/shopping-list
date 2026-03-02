@@ -34,73 +34,46 @@ use Spryker\Zed\ShoppingList\Persistence\Propel\Mapper\ShoppingListPermissionGro
  */
 class ShoppingListPersistenceFactory extends AbstractPersistenceFactory
 {
-    /**
-     * @return \Orm\Zed\ShoppingList\Persistence\SpyShoppingListQuery
-     */
     public function createShoppingListQuery(): SpyShoppingListQuery
     {
         return SpyShoppingListQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\ShoppingList\Persistence\SpyShoppingListItemQuery
-     */
     public function createShoppingListItemQuery(): SpyShoppingListItemQuery
     {
         return SpyShoppingListItemQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\ShoppingList\Persistence\SpyShoppingListPermissionGroupQuery
-     */
     public function createShoppingListPermissionGroupQuery(): SpyShoppingListPermissionGroupQuery
     {
         return SpyShoppingListPermissionGroupQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\Permission\Persistence\SpyPermissionQuery
-     */
     public function createPermissionQuery(): SpyPermissionQuery
     {
         return SpyPermissionQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\ShoppingList\Persistence\SpyShoppingListPermissionGroupToPermissionQuery
-     */
     public function createShoppingListPermissionGroupToPermissionQuery(): SpyShoppingListPermissionGroupToPermissionQuery
     {
         return SpyShoppingListPermissionGroupToPermissionQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\ShoppingList\Persistence\SpyShoppingListCompanyBusinessUnitQuery
-     */
     public function createShoppingListCompanyBusinessUnitQuery(): SpyShoppingListCompanyBusinessUnitQuery
     {
         return SpyShoppingListCompanyBusinessUnitQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\ShoppingList\Persistence\SpyShoppingListCompanyUserQuery
-     */
     public function createShoppingListCompanyUserQuery(): SpyShoppingListCompanyUserQuery
     {
         return SpyShoppingListCompanyUserQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\ShoppingList\Persistence\SpyShoppingListCompanyBusinessUnitBlacklistQuery
-     */
     public function createShoppingListCompanyBusinessUnitBlacklistPropelQuery(): SpyShoppingListCompanyBusinessUnitBlacklistQuery
     {
         return SpyShoppingListCompanyBusinessUnitBlacklistQuery::create();
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Persistence\Propel\Mapper\ShoppingListMapperInterface
-     */
     public function createShoppingListMapper(): ShoppingListMapperInterface
     {
         return new ShoppingListMapper(
@@ -108,33 +81,21 @@ class ShoppingListPersistenceFactory extends AbstractPersistenceFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Persistence\Propel\Mapper\ShoppingListItemMapperInterface
-     */
     public function createShoppingListItemMapper(): ShoppingListItemMapperInterface
     {
         return new ShoppingListItemMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Persistence\Propel\Mapper\ShoppingListPermissionGroupMapperInterface
-     */
     public function createShoppingListPermissionGroupMapper(): ShoppingListPermissionGroupMapperInterface
     {
         return new ShoppingListPermissionGroupMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Persistence\Propel\Mapper\ShoppingListCompanyBusinessUnitMapperInterface
-     */
     public function createShoppingListCompanyBusinessUnitMapper(): ShoppingListCompanyBusinessUnitMapperInterface
     {
         return new ShoppingListCompanyBusinessUnitMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\ShoppingList\Persistence\Propel\Mapper\ShoppingListCompanyUserMapperInterface
-     */
     public function createShoppingListCompanyUserMapper(): ShoppingListCompanyUserMapperInterface
     {
         return new ShoppingListCompanyUserMapper();

@@ -76,11 +76,6 @@ class ShoppingListItemPluginExecutor implements ShoppingListItemPluginExecutorIn
         $this->bulkPostSavePlugins = $bulkPostSavePlugins;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemTransfer
-     */
     public function executeBeforeDeletePlugins(ShoppingListItemTransfer $shoppingListItemTransfer): ShoppingListItemTransfer
     {
         foreach ($this->beforeDeletePlugins as $beforeDeletePlugin) {
@@ -106,11 +101,6 @@ class ShoppingListItemPluginExecutor implements ShoppingListItemPluginExecutorIn
         return $shoppingListItemTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemCollectionTransfer $shoppingListItemCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemCollectionTransfer
-     */
     public function executeBulkPostSavePlugins(ShoppingListItemCollectionTransfer $shoppingListItemCollectionTransfer): ShoppingListItemCollectionTransfer
     {
         foreach ($this->bulkPostSavePlugins as $bulkPostSavePlugin) {
@@ -136,11 +126,6 @@ class ShoppingListItemPluginExecutor implements ShoppingListItemPluginExecutorIn
         return $shoppingListItemTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemCollectionTransfer $shoppingListItemCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemCollectionTransfer
-     */
     public function executeShoppingListItemCollectionExpanderPlugins(
         ShoppingListItemCollectionTransfer $shoppingListItemCollectionTransfer
     ): ShoppingListItemCollectionTransfer {
@@ -152,11 +137,6 @@ class ShoppingListItemPluginExecutor implements ShoppingListItemPluginExecutorIn
         return $shoppingListItemCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListPreAddItemCheckResponseTransfer
-     */
     public function executeAddShoppingListItemPreCheckPlugins(
         ShoppingListItemTransfer $shoppingListItemTransfer
     ): ShoppingListPreAddItemCheckResponseTransfer {
@@ -176,22 +156,11 @@ class ShoppingListItemPluginExecutor implements ShoppingListItemPluginExecutorIn
         return $commonShoppingListPreAddItemCheckResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return bool
-     */
     public function executeAddItemPreCheckPlugins(ShoppingListItemTransfer $shoppingListItemTransfer): bool
     {
         return $this->executeAddShoppingListItemPreCheckPlugins($shoppingListItemTransfer)->getIsSuccess();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListPreAddItemCheckResponseTransfer $shoppingListPreAddItemCheckResponseTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListPreAddItemCheckResponseTransfer $commonShoppingListPreAddItemCheckResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListPreAddItemCheckResponseTransfer
-     */
     protected function processErrorMessages(
         ShoppingListPreAddItemCheckResponseTransfer $shoppingListPreAddItemCheckResponseTransfer,
         ShoppingListPreAddItemCheckResponseTransfer $commonShoppingListPreAddItemCheckResponseTransfer

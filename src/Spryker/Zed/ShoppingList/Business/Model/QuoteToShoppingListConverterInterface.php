@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\ShoppingListTransfer;
 
 interface QuoteToShoppingListConverterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListFromCartRequestTransfer $shoppingListFromCartRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     public function createShoppingListFromQuote(ShoppingListFromCartRequestTransfer $shoppingListFromCartRequestTransfer): ShoppingListTransfer;
 }

@@ -11,15 +11,7 @@ use Generated\Shared\Transfer\PermissionTransfer;
 
 interface ShoppingListToPermissionFacadeInterface
 {
-    /**
-     * @param string $key
-     *
-     * @return \Generated\Shared\Transfer\PermissionTransfer|null
-     */
     public function findPermissionByKey(string $key): ?PermissionTransfer;
 
-    /**
-     * @return void
-     */
     public function syncPermissionPlugins(): void;
 }

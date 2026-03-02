@@ -97,11 +97,6 @@ class ShoppingListDependencyProvider extends AbstractBundleDependencyProvider
      */
     public const PLUGINS_ITEM_TO_SHOPPING_LIST_ITEM_MAPPER = 'PLUGINS_ITEM_TO_SHOPPING_LIST_ITEM_MAPPER';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = $this->addMessengerFacade($container);
@@ -124,11 +119,6 @@ class ShoppingListDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addStoreFacade(Container $container): Container
     {
         $container->set(static::FACADE_STORE, function (Container $container) {
@@ -138,11 +128,6 @@ class ShoppingListDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addProductFacade(Container $container): Container
     {
         $container->set(static::FACADE_PRODUCT, function (Container $container) {
@@ -152,11 +137,6 @@ class ShoppingListDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addPermissionFacade(Container $container): Container
     {
         $container->set(static::FACADE_PERMISSION, function (Container $container) {
@@ -166,11 +146,6 @@ class ShoppingListDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addPersistentCartFacade(Container $container): Container
     {
         $container->set(static::FACADE_PERSISTENT_CART, function (Container $container) {
@@ -180,11 +155,6 @@ class ShoppingListDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addCompanyUserFacade(Container $container): Container
     {
         $container->set(static::FACADE_COMPANY_USER, function (Container $container) {
@@ -194,11 +164,6 @@ class ShoppingListDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addMessengerFacade(Container $container): Container
     {
         $container->set(static::FACADE_MESSENGER, function (Container $container) {
@@ -208,11 +173,6 @@ class ShoppingListDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addEventFacade(Container $container): Container
     {
         $container->set(static::FACADE_EVENT, function (Container $container) {
@@ -238,11 +198,6 @@ class ShoppingListDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addItemCollectionExpanderPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_ITEM_COLLECTION_EXPANDER, function (Container $container) {
@@ -252,11 +207,6 @@ class ShoppingListDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addQuoteItemExpanderPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_QUOTE_ITEM_EXPANDER, function () {
@@ -266,11 +216,6 @@ class ShoppingListDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addAddItemPreCheckPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_ADD_ITEM_PRE_CHECK, function () {
@@ -330,11 +275,6 @@ class ShoppingListDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addShoppingListItemBulkPostSavePlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_SHOPPING_LIST_ITEM_BULK_POST_SAVE, function () {
@@ -362,11 +302,6 @@ class ShoppingListDependencyProvider extends AbstractBundleDependencyProvider
         return [];
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addBeforeDeleteShoppingListItemPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_SHOPPING_LIST_ITEM_BEFORE_DELETE, function () {
@@ -384,11 +319,6 @@ class ShoppingListDependencyProvider extends AbstractBundleDependencyProvider
         return [];
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addItemToShoppingListItemMapperPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_ITEM_TO_SHOPPING_LIST_ITEM_MAPPER, function () {

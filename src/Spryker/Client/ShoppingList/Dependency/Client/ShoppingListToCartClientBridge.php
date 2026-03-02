@@ -37,21 +37,11 @@ class ShoppingListToCartClientBridge implements ShoppingListToCartClientInterfac
         return $this->cartClient->addValidItems($cartChangeTransfer, $params);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
     public function getQuote(): QuoteTransfer
     {
         return $this->cartClient->getQuote();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param string $sku
-     * @param string|null $groupKey
-     *
-     * @return \Generated\Shared\Transfer\ItemTransfer|null
-     */
     public function findQuoteItem(QuoteTransfer $quoteTransfer, string $sku, ?string $groupKey = null): ?ItemTransfer
     {
         return $this->cartClient->findQuoteItem($quoteTransfer, $sku, $groupKey);

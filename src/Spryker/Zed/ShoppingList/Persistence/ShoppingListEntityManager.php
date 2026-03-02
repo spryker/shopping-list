@@ -27,11 +27,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
  */
 class ShoppingListEntityManager extends AbstractEntityManager implements ShoppingListEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     public function saveShoppingList(ShoppingListTransfer $shoppingListTransfer): ShoppingListTransfer
     {
         $shoppingListEntity = $this->getFactory()
@@ -47,11 +42,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
         return $shoppingListTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return void
-     */
     public function deleteShoppingListByName(ShoppingListTransfer $shoppingListTransfer): void
     {
         $shoppingListEntity = $this->getFactory()
@@ -63,11 +53,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
         $shoppingListEntity->delete();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return void
-     */
     public function deleteShoppingListItems(ShoppingListTransfer $shoppingListTransfer): void
     {
         $shoppingListEntities = $this->getFactory()
@@ -79,11 +64,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemTransfer
-     */
     public function saveShoppingListItem(ShoppingListItemTransfer $shoppingListItemTransfer): ShoppingListItemTransfer
     {
         $shoppingListItemEntity = $this->getFactory()
@@ -98,11 +78,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
         return $this->createShoppingListItem($shoppingListItemTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemTransfer
-     */
     public function saveShoppingListItemByUuid(ShoppingListItemTransfer $shoppingListItemTransfer): ShoppingListItemTransfer
     {
         $shoppingListItemEntity = $this->getFactory()
@@ -117,11 +92,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
         return $this->createShoppingListItem($shoppingListItemTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemTransfer
-     */
     protected function createShoppingListItem(ShoppingListItemTransfer $shoppingListItemTransfer): ShoppingListItemTransfer
     {
         $shoppingListItemEntity = $this->getFactory()
@@ -134,12 +104,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
         return $shoppingListItemTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     * @param \Orm\Zed\ShoppingList\Persistence\SpyShoppingListItem $shoppingListItemEntity
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemTransfer
-     */
     protected function updateShoppingListItem(
         ShoppingListItemTransfer $shoppingListItemTransfer,
         SpyShoppingListItem $shoppingListItemEntity
@@ -155,11 +119,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
         return $shoppingListItemTransfer;
     }
 
-    /**
-     * @param int $idShoppingListItem
-     *
-     * @return void
-     */
     public function deleteShoppingListItem(int $idShoppingListItem): void
     {
         $this->getFactory()
@@ -169,11 +128,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
             ->delete();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SpyShoppingListPermissionGroupEntityTransfer $shoppingListPermissionGroupEntityTransfer
-     *
-     * @return \Generated\Shared\Transfer\SpyShoppingListPermissionGroupEntityTransfer
-     */
     public function saveShoppingListPermissionGroup(
         SpyShoppingListPermissionGroupEntityTransfer $shoppingListPermissionGroupEntityTransfer
     ): SpyShoppingListPermissionGroupEntityTransfer {
@@ -190,12 +144,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
         return $shoppingListPermissionGroupEntityTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SpyShoppingListPermissionGroupEntityTransfer $shoppingListPermissionGroupEntityTransfer
-     * @param \Generated\Shared\Transfer\PermissionTransfer $permissionTransfer
-     *
-     * @return void
-     */
     public function saveShoppingListPermissionGroupToPermission(
         SpyShoppingListPermissionGroupEntityTransfer $shoppingListPermissionGroupEntityTransfer,
         PermissionTransfer $permissionTransfer
@@ -208,11 +156,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
             ->save();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCompanyBusinessUnitTransfer $shoppingListCompanyBusinessUnitTransfer
-     *
-     * @return void
-     */
     public function saveShoppingListCompanyBusinessUnit(
         ShoppingListCompanyBusinessUnitTransfer $shoppingListCompanyBusinessUnitTransfer
     ): void {
@@ -230,11 +173,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
         $this->createShoppingListCompanyBusinessUnit($shoppingListCompanyBusinessUnitTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCompanyUserTransfer $shoppingListCompanyUserTransfer
-     *
-     * @return void
-     */
     public function saveShoppingListCompanyUser(
         ShoppingListCompanyUserTransfer $shoppingListCompanyUserTransfer
     ): void {
@@ -252,11 +190,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
         $this->createShoppingListCompanyUser($shoppingListCompanyUserTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCompanyUserTransfer $shoppingListCompanyUserTransfer
-     *
-     * @return void
-     */
     public function deleteShoppingListCompanyUser(ShoppingListCompanyUserTransfer $shoppingListCompanyUserTransfer): void
     {
         $this->getFactory()
@@ -265,11 +198,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
             ->delete();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return void
-     */
     public function deleteShoppingListCompanyUsers(ShoppingListTransfer $shoppingListTransfer): void
     {
         $shoppingListCompanyUserEntities = $this->getFactory()
@@ -282,11 +210,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return void
-     */
     public function deleteShoppingListCompanyBusinessUnits(ShoppingListTransfer $shoppingListTransfer): void
     {
         $shoppingListCompanyBusinessUnitEntities = $this->getFactory()
@@ -299,11 +222,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
         }
     }
 
-    /**
-     * @param int $idCompanyBusinessUnit
-     *
-     * @return void
-     */
     public function deleteShoppingListCompanyBusinessUnitsByCompanyBusinessUnitId(int $idCompanyBusinessUnit): void
     {
         $this->getFactory()
@@ -312,11 +230,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
             ->delete();
     }
 
-    /**
-     * @param int $idCompanyUser
-     *
-     * @return void
-     */
     public function deleteShoppingListsCompanyUserByCompanyUserId(int $idCompanyUser): void
     {
         /** @var \Propel\Runtime\Collection\ObjectCollection $shoppingListCompanyUserCollection */
@@ -328,11 +241,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
         $shoppingListCompanyUserCollection->delete();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCompanyBusinessUnitTransfer $shoppingListCompanyBusinessUnitTransfer
-     *
-     * @return void
-     */
     public function deleteShoppingListCompanyBusinessUnit(ShoppingListCompanyBusinessUnitTransfer $shoppingListCompanyBusinessUnitTransfer): void
     {
         $this->getFactory()
@@ -341,11 +249,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
             ->delete();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCompanyBusinessUnitTransfer $shoppingListCompanyBusinessUnitTransfer
-     *
-     * @return void
-     */
     protected function createShoppingListCompanyBusinessUnit(
         ShoppingListCompanyBusinessUnitTransfer $shoppingListCompanyBusinessUnitTransfer
     ): void {
@@ -359,12 +262,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
         $shoppingListCompanyBusinessUnitEntity->save();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCompanyBusinessUnitTransfer $shoppingListCompanyBusinessUnitTransfer
-     * @param \Orm\Zed\ShoppingList\Persistence\SpyShoppingListCompanyBusinessUnit $shoppingListCompanyBusinessUnitEntity
-     *
-     * @return void
-     */
     protected function updateShoppingListCompanyBusinessUnit(
         ShoppingListCompanyBusinessUnitTransfer $shoppingListCompanyBusinessUnitTransfer,
         SpyShoppingListCompanyBusinessUnit $shoppingListCompanyBusinessUnitEntity
@@ -379,11 +276,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
         $shoppingListCompanyBusinessUnitEntity->save();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCompanyUserTransfer $shoppingListCompanyUserTransfer
-     *
-     * @return void
-     */
     protected function createShoppingListCompanyUser(
         ShoppingListCompanyUserTransfer $shoppingListCompanyUserTransfer
     ): void {
@@ -397,12 +289,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
         $shoppingListCompanyUserEntity->save();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCompanyUserTransfer $shoppingListCompanyUserTransfer
-     * @param \Orm\Zed\ShoppingList\Persistence\SpyShoppingListCompanyUser $shoppingListCompanyUserEntity
-     *
-     * @return void
-     */
     protected function updateShoppingListCompanyUser(
         ShoppingListCompanyUserTransfer $shoppingListCompanyUserTransfer,
         SpyShoppingListCompanyUser $shoppingListCompanyUserEntity
@@ -417,11 +303,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
         $shoppingListCompanyUserEntity->save();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListCompanyBusinessUnitBlacklistTransfer $shoppingListCompanyBusinessUnitBlacklistTransfer
-     *
-     * @return void
-     */
     public function createShoppingListCompanyBusinessUnitBlacklist(
         ShoppingListCompanyBusinessUnitBlacklistTransfer $shoppingListCompanyBusinessUnitBlacklistTransfer
     ): void {
@@ -430,11 +311,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
         $shoppingListCompanyBusinessUnitBlacklistEntity->save();
     }
 
-    /**
-     * @param int $idShoppingList
-     *
-     * @return void
-     */
     public function deleteCompanyBusinessUnitBlacklistByShoppingListId(int $idShoppingList): void
     {
         $shoppingListCompanyBusinessUnitBlacklistEntities = $this->getFactory()
@@ -448,11 +324,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
         }
     }
 
-    /**
-     * @param int $idCompanyBusinessUnit
-     *
-     * @return void
-     */
     public function deleteCompanyBusinessUnitBlacklistByBusinessUnitId(int $idCompanyBusinessUnit): void
     {
         $shoppingListCompanyBusinessUnitBlacklistEntities = $this->getFactory()
@@ -466,11 +337,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
         }
     }
 
-    /**
-     * @param int $idCompanyUser
-     *
-     * @return void
-     */
     public function deleteShoppingListCompanyBusinessUnitBlacklistsByIdCompanyUser(int $idCompanyUser): void
     {
         /** @var \Propel\Runtime\Collection\ObjectCollection $shoppingListCompanyBusinessUnitBlacklistCollection */
@@ -482,12 +348,6 @@ class ShoppingListEntityManager extends AbstractEntityManager implements Shoppin
         $shoppingListCompanyBusinessUnitBlacklistCollection->delete();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemCollectionTransfer $shoppingListItemCollectionTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemCollectionTransfer
-     */
     public function saveShoppingListItems(
         ShoppingListItemCollectionTransfer $shoppingListItemCollectionTransfer,
         ShoppingListTransfer $shoppingListTransfer

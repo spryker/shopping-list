@@ -34,9 +34,6 @@ class AddItemsTest extends Unit
      */
     protected ShoppingListClientTester $tester;
 
-    /**
-     * @return void
-     */
     public function testAddItemsMakeSureThatExpanderPluginStackWasExecuted(): void
     {
         // Arrange

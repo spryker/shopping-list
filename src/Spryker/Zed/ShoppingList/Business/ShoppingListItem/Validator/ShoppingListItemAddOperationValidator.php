@@ -46,12 +46,6 @@ class ShoppingListItemAddOperationValidator implements ShoppingListItemAddOperat
      */
     protected $permissionValidator;
 
-    /**
-     * @param \Spryker\Zed\ShoppingList\Business\ShoppingListItem\Validator\ShoppingListItemValidatorInterface $shoppingListItemValidator
-     * @param \Spryker\Zed\ShoppingList\Business\ShoppingListItem\Messenger\ShoppingListItemMessageAdderInterface $messageAdder
-     * @param \Spryker\Zed\ShoppingList\Business\ShoppingListItem\ShoppingListItemPluginExecutorInterface $pluginExecutor
-     * @param \Spryker\Zed\ShoppingList\Business\ShoppingListItem\Validator\ShoppingListItemPermissionValidatorInterface $permissionValidator
-     */
     public function __construct(
         ShoppingListItemValidatorInterface $shoppingListItemValidator,
         ShoppingListItemMessageAdderInterface $messageAdder,
@@ -64,11 +58,6 @@ class ShoppingListItemAddOperationValidator implements ShoppingListItemAddOperat
         $this->permissionValidator = $permissionValidator;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     public function invalidateResponse(
         ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
     ): ShoppingListItemResponseTransfer {
@@ -81,12 +70,6 @@ class ShoppingListItemAddOperationValidator implements ShoppingListItemAddOperat
         return $shoppingListItemResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     public function validateRequest(
         ShoppingListItemTransfer $shoppingListItemTransfer,
         ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
@@ -112,12 +95,6 @@ class ShoppingListItemAddOperationValidator implements ShoppingListItemAddOperat
         return $shoppingListItemResponseTransfer->setIsSuccess(true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListTransfer $shoppingListTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListResponseTransfer $shoppingListResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListResponseTransfer
-     */
     public function validateBulkRequest(
         ShoppingListTransfer $shoppingListTransfer,
         ShoppingListResponseTransfer $shoppingListResponseTransfer
@@ -147,12 +124,6 @@ class ShoppingListItemAddOperationValidator implements ShoppingListItemAddOperat
         return $shoppingListResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     protected function validateShoppingListItemToBeAdded(
         ShoppingListItemTransfer $shoppingListItemTransfer,
         ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
@@ -182,12 +153,6 @@ class ShoppingListItemAddOperationValidator implements ShoppingListItemAddOperat
         return $shoppingListItemResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     * @param \Generated\Shared\Transfer\ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListItemResponseTransfer
-     */
     protected function performShoppingListItemAddPreCheckPlugins(
         ShoppingListItemTransfer $shoppingListItemTransfer,
         ShoppingListItemResponseTransfer $shoppingListItemResponseTransfer
@@ -207,11 +172,6 @@ class ShoppingListItemAddOperationValidator implements ShoppingListItemAddOperat
         return $shoppingListItemResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ShoppingListItemTransfer $shoppingListItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ShoppingListTransfer
-     */
     protected function createShoppingListTransfer(
         ShoppingListItemTransfer $shoppingListItemTransfer
     ): ShoppingListTransfer {
