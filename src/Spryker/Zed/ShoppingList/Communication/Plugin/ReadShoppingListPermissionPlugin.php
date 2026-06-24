@@ -19,6 +19,9 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
  */
 class ReadShoppingListPermissionPlugin extends AbstractPlugin implements ExecutablePermissionPluginInterface, InfrastructuralPermissionPluginInterface
 {
+    /**
+     * @api
+     */
     public const KEY = ShoppingListConfig::READ_SHOPPING_LIST_PERMISSION_PLUGIN_KEY;
 
     /**

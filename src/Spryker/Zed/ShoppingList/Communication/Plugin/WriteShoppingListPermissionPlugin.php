@@ -19,6 +19,9 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
  */
 class WriteShoppingListPermissionPlugin extends AbstractPlugin implements ExecutablePermissionPluginInterface, InfrastructuralPermissionPluginInterface
 {
+    /**
+     * @api
+     */
     public const KEY = ShoppingListConfig::WRITE_SHOPPING_LIST_PERMISSION_PLUGIN_KEY;
 
     /**
