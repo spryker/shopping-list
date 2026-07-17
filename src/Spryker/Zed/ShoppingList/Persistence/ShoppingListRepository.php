@@ -87,6 +87,7 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
             ->addJoin(SpyShoppingListTableMap::COL_CUSTOMER_REFERENCE, SpyCustomerTableMap::COL_CUSTOMER_REFERENCE, Criteria::LEFT_JOIN)
             ->withColumn(SpyCustomerTableMap::COL_FIRST_NAME, ShoppingListMapper::FIELD_FIRST_NAME)
             ->withColumn(SpyCustomerTableMap::COL_LAST_NAME, ShoppingListMapper::FIELD_LAST_NAME)
+            ->orderBy(SpyShoppingListItemTableMap::COL_ID_SHOPPING_LIST_ITEM)
             ->filterByIdShoppingList($shoppingListTransfer->getIdShoppingList());
 
         $shoppingListEntityTransferCollection = $this->buildQueryFromCriteria($shoppingListQuery)->find();
@@ -107,6 +108,7 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
             ->addJoin(SpyShoppingListTableMap::COL_CUSTOMER_REFERENCE, SpyCustomerTableMap::COL_CUSTOMER_REFERENCE, Criteria::LEFT_JOIN)
             ->withColumn(SpyCustomerTableMap::COL_FIRST_NAME, ShoppingListMapper::FIELD_FIRST_NAME)
             ->withColumn(SpyCustomerTableMap::COL_LAST_NAME, ShoppingListMapper::FIELD_LAST_NAME)
+            ->orderBy(SpyShoppingListItemTableMap::COL_ID_SHOPPING_LIST_ITEM)
             ->filterByUuid($shoppingListTransfer->getUuid());
 
         $shoppingListEntityTransferCollection = $this->buildQueryFromCriteria($shoppingListQuery)->find();
@@ -160,6 +162,7 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
     {
         $shoppingListsItemQuery = $this->getFactory()
             ->createShoppingListItemQuery()
+            ->orderByIdShoppingListItem()
             ->useSpyShoppingListQuery()
             ->filterByIdShoppingList_In($shoppingListIds)
             ->endUse();
@@ -174,7 +177,8 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
     {
         $shoppingListsItemQuery = $this->getFactory()
             ->createShoppingListItemQuery()
-            ->filterByFkShoppingList($idShoppingList);
+            ->filterByFkShoppingList($idShoppingList)
+            ->orderByIdShoppingListItem();
 
         $shoppingListsItemEntityTransferCollection = $this->buildQueryFromCriteria($shoppingListsItemQuery)->find();
 
@@ -187,7 +191,8 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
     {
         $shoppingListsItemQuery = $this->getFactory()
             ->createShoppingListItemQuery()
-            ->filterByIdShoppingListItem_In($shoppingListItemIds);
+            ->filterByIdShoppingListItem_In($shoppingListItemIds)
+            ->orderByIdShoppingListItem();
         $shoppingListsItemEntityTransferCollection = $this->buildQueryFromCriteria($shoppingListsItemQuery)->find();
 
         return $this->getFactory()
@@ -204,7 +209,8 @@ class ShoppingListRepository extends AbstractRepository implements ShoppingListR
     {
         $shoppingListsItemQuery = $this->getFactory()
             ->createShoppingListItemQuery()
-            ->filterByUuid_In($shoppingListItemUuids);
+            ->filterByUuid_In($shoppingListItemUuids)
+            ->orderByIdShoppingListItem();
 
         return $this->getFactory()
             ->createShoppingListItemMapper()

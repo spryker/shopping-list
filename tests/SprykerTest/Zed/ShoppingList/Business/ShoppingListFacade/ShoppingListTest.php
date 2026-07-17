@@ -500,6 +500,43 @@ class ShoppingListTest extends Unit
         $this->assertSame(3, $shoppingListItemResponseTransfer->getShoppingLists()[0]->getNumberOfItems(), 'Customer should get correct count of items in the shopping list.');
     }
 
+    public function testGetShoppingListWithMultipleItemsShouldReturnItemsOrderedById(): void
+    {
+        // Arrange
+        /** @var \Spryker\Zed\ShoppingList\Business\ShoppingListFacadeInterface $shoppingListFacade */
+        $shoppingListFacade = $this->tester->getFacade();
+        $shoppingListTransfer = $this->tester->createShoppingList($this->ownerCompanyUserTransfer);
+
+        for ($itemNumber = 0; $itemNumber < 3; $itemNumber++) {
+            $shoppingListFacade->addShoppingListItem(
+                $this->tester->buildShoppingListItem([
+                    ShoppingListItemTransfer::ID_COMPANY_USER => $this->ownerCompanyUserTransfer->getIdCompanyUser(),
+                    ShoppingListItemTransfer::FK_SHOPPING_LIST => $shoppingListTransfer->getIdShoppingList(),
+                    ShoppingListItemTransfer::QUANTITY => 1,
+                    ShoppingListItemTransfer::SKU => $this->product->getSku(),
+                ]),
+            );
+        }
+
+        // Act
+        $loadedShoppingListTransfer = $shoppingListFacade->getShoppingList($shoppingListTransfer);
+
+        // Assert
+        $loadedShoppingListItemIds = [];
+        foreach ($loadedShoppingListTransfer->getItems() as $shoppingListItemTransfer) {
+            $loadedShoppingListItemIds[] = $shoppingListItemTransfer->getIdShoppingListItem();
+        }
+
+        $expectedShoppingListItemIds = $loadedShoppingListItemIds;
+        sort($expectedShoppingListItemIds);
+
+        $this->assertSame(
+            $expectedShoppingListItemIds,
+            $loadedShoppingListItemIds,
+            'Shopping list items should be returned ordered by their id ascending.',
+        );
+    }
+
     public function testGetShoppingListOverview(): void
     {
         // Arrange
