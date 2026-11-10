@@ -7,9 +7,9 @@
 
 namespace Spryker\Shared\ShoppingList;
 
-use Spryker\Shared\Kernel\AbstractBundleConfig;
+use Spryker\Shared\Kernel\AbstractSharedConfig;
 
-class ShoppingListConfig extends AbstractBundleConfig
+class ShoppingListConfig extends AbstractSharedConfig
 {
     /**
      * @api
