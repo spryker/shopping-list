@@ -102,12 +102,12 @@ class CartHandler implements CartHandlerInterface
 
         $existingSkuIndex = $this->createExistingSkuIndex($quoteTransfer);
 
-        foreach ($shoppingListAddToCartRequestCollectionTransfer->getRequests() as $ShoppingListAddToCartRequestTransfer) {
-            if (isset($existingSkuIndex[$ShoppingListAddToCartRequestTransfer->getSku()])) {
+        foreach ($shoppingListAddToCartRequestCollectionTransfer->getRequests() as $shoppingListAddToCartRequestTransfer) {
+            if (isset($existingSkuIndex[$shoppingListAddToCartRequestTransfer->getSku()])) {
                 continue;
             }
 
-            $shoppingListRequestCollectionDiff->addRequest($ShoppingListAddToCartRequestTransfer);
+            $shoppingListRequestCollectionDiff->addRequest($shoppingListAddToCartRequestTransfer);
         }
 
         return $shoppingListRequestCollectionDiff;
